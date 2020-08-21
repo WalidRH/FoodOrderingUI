@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "FoodOrderingUI"
+    }
+  },
+  "defaultProject": "FoodOrderingUI",
+  "cli": {
+    "analytics": false
+  }
 }

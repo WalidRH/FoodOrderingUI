@@ -1,0 +1,50 @@
+.main-header{
+    margin: 0px;
+    width: 100%;
+    height: auto;
+    border: 2px solid;
+}
+
+.main-header > div {
+    display: inline-block;
+    margin-left: 30px;
+    vertical-align: middle;
+}
+
+div > a {
+    font-family: 'Russo One', sans-serif;
+    font-size: 50px;
+    width : 150px;
+}
+li{
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: bold;
+    display: inline-block;
+    padding: 5px 20px;
+    border-left: 5x;
+    vertical-align: middle;
+}
+
+.main-nav{
+    text-align: right;
+    padding-right: 100px;
+    display: inline-block;
+    width: calc(100% - 400px);
+    vertical-align: middle;
+}
+
+li:active,
+li:hover{
+    border-radius: 7px;
+    box-shadow: 0px 0px 10px 3px;
+}
+
+li:active{
+   background: black;
+   color: white;
+
+}
+svg{
+    vertical-align: middle;
+    margin-left: 10px;
+}
