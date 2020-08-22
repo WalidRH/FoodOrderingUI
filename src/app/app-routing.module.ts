@@ -6,7 +6,9 @@ const routes: Routes = [
   { path: 'home', loadChildren: () => import('./home/module/home.module').then(m => m.HomeModule) },
   { path: 'menu', loadChildren: () => import('./menu/module/menu.module').then(m => m.MenuModule) },
   { path: 'contacts', loadChildren: () => import('./contact/module/contact.module').then(m => m.ContactModule) },
-  { path: 'about', loadChildren: () => import('./about/module/about.module').then(m => m.AboutModule)}
+  { path: 'about', loadChildren: () => import('./about/module/about.module').then(m => m.AboutModule)},
+  { path: 'login', loadChildren: () => import('./authentication/login/module/login.module').then(m => m.LoginModule)},
+  { path: 'signup', loadChildren: () => import('./authentication/signup/module/signup.module').then(m => m.SignupModule)}
 ];
 
 @NgModule({
