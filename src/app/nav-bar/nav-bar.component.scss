@@ -11,6 +11,14 @@
     vertical-align: middle;
 }
 
+.main-nav__item > a {
+    text-decoration: none;
+    color: black;
+}
+
+.main-nav__item > a:active{
+    color: white;
+}
 div > a {
     font-family: 'Russo One', sans-serif;
     font-size: 50px;
@@ -41,8 +49,6 @@ li:hover{
 
 li:active{
    background: black;
-   color: white;
-
 }
 svg{
     vertical-align: middle;
