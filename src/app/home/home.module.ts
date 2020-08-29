@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HomeRouter } from './router.module';
 import { HomeComponent } from './home.component';
 import { DescriptionBlockComponent } from './blocks/description-block/description-block.component';
+import { StepsComponent } from './blocks/steps/steps.component';
 
 
 
@@ -11,7 +12,8 @@ import { DescriptionBlockComponent } from './blocks/description-block/descriptio
   declarations: [
     HomeComponent,
     IntroBlockComponent,
-    DescriptionBlockComponent
+    DescriptionBlockComponent,
+    StepsComponent
   ],
   imports: [
     CommonModule,
