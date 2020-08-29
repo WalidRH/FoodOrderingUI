@@ -1,0 +1,53 @@
+.head-block{
+    text-align: center;
+    padding-top: 100px;
+}
+.head-block__title{
+    font-family: 'Arimo', sans-serif;
+    font-size: 300%;
+    padding: 6px;
+    margin: 0px;
+}
+
+.head-block__sub-title{
+    font-family: 'Arimo', sans-serif;
+    font-size: 109%;
+    color: #9a9a9a;
+    font-weight: bold;
+}
+
+.body-block{
+    text-align: center;
+}
+
+.body-block__step{
+    display: inline-block;
+    vertical-align: middle;
+    width: 10%;
+}
+
+.body-block__step-number{
+    border-radius: 50%;
+    background: #02ab00;
+    color: white;
+    width: 40px;
+    padding: 5px 0px;
+    margin: 0 auto;
+    font-family: 'Arimo', sans-serif;
+    font-size: 160%;
+    margin-top: 20px;
+}
+.body-block__step-title{
+    font-family: 'Arimo', sans-serif;
+    font-size: 160%;
+    width: 100%;
+    margin: auto;
+    padding-top: 20px;
+}
+
+.body-block__arrow{
+    margin: 50px 0px;
+    display: inline-block;
+    vertical-align: top;
+    width: auto;
+}
