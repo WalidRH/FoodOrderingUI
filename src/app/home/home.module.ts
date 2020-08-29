@@ -5,6 +5,7 @@ import { HomeRouter } from './router.module';
 import { HomeComponent } from './home.component';
 import { DescriptionBlockComponent } from './blocks/description-block/description-block.component';
 import { StepsComponent } from './blocks/steps/steps.component';
+import { AvantagesBlockComponent } from './blocks/avantages-block/avantages-block.component';
 
 
 
@@ -13,7 +14,8 @@ import { StepsComponent } from './blocks/steps/steps.component';
     HomeComponent,
     IntroBlockComponent,
     DescriptionBlockComponent,
-    StepsComponent
+    StepsComponent,
+    AvantagesBlockComponent
   ],
   imports: [
     CommonModule,
