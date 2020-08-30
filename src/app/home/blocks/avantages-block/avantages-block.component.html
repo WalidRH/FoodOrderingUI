@@ -1,1 +1,39 @@
-<p>avantages-block works!</p>
+<div class="head-block">
+    <p class="head-block__title"> WHY PEOPLE CHOOSE US </p>
+    <p class="head-block__sub-title"> Clients’ Most Popular Choise </p>
+</div>
+<div class="body-block">
+    <div class="body-block__column">
+        <div class="body-block__container" *ngFor='let element of advantagesList; index as i'>
+            <div *ngIf="i<listsize/2">
+                <div class="body-block__raison">
+                    <div class="body-block__raison-title">
+                        {{element.title}}
+                    </div>
+                    <div class="body-block__raison-number"> {{i+1}} </div>
+                    <div class="body-block__raison-description">
+                        {{element.description}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="body-block__image">
+        <img src="../../../../assets/images/order-flat-image.png">
+    </div>
+    <div class="body-block__column">
+        <div class="body-block__container" *ngFor='let element of advantagesList; index as i'>
+            <div *ngIf="i>=listsize/2">
+                <div class="body-block__raison">
+                    <div class="body-block__raison-number"> {{i+1}} </div>
+                    <div class="body-block__raison-title right-column">
+                        {{element.title}}
+                    </div>
+                    <div class="body-block__raison-description right-column">
+                        {{element.description}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
