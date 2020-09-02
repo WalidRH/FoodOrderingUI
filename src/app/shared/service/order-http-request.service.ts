@@ -9,7 +9,7 @@ export class OrderHttpRequestService {
 
   constructor( private http: HttpClient ) { }
 
-  getPopularMenus(){
+  getPopularMenus(): any {
     return this.http.get<PopularMenuInfo[]>(
       'http://localhost:8080/api/order/OrderedMenus/popular'
     );
@@ -17,9 +17,9 @@ export class OrderHttpRequestService {
 
   getMenuInfo(menuId: number){
     let queryParam = new HttpParams();
-    queryParam.set('id', '' + menuId);
+     queryParam = queryParam.set('id', '' + menuId);
     return this.http.get(
-      'http://localhost:8080/api/order/findOrder?id=7',
+      'http://localhost:8080/api/menu/find',
       {
         params: queryParam
       }
