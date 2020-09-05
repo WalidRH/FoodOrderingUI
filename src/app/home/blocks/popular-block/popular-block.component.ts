@@ -1,3 +1,4 @@
+import { MenuData } from './../../../shared/model/MenuData.module';
 import { PopularMenuInfo } from './../../../shared/model/PopularMenuInfo.module';
 import { OrderHttpRequestService } from './../../../shared/service/order-http-request.service';
 import { Component, OnInit } from '@angular/core';
@@ -11,32 +12,22 @@ import { map } from 'rxjs/operators';
 })
 export class PopularBlockComponent implements OnInit {
 
-  popularMenuArray: Subject<any> = new Subject();
-
+  arrayMenu: MenuData[] = [];
   constructor( private orderHttpRequests: OrderHttpRequestService ) { }
 
   ngOnInit(): void {
       this.orderHttpRequests.getPopularMenus()
       .subscribe(
         (response: PopularMenuInfo[]) => {
-          console.log( 'returned DATA ==> ', response );
-          let arrayMenu: any[] = [];
           response.forEach(element => {
-            console.log('element  ==>  ', element);
             this.orderHttpRequests.getMenuInfo(element.menu).subscribe(
               responseData => {
+                responseData.image = '../../../../assets/images/categories/' + responseData.categorie + '/' + responseData.ref + '.jpg',
                 console.log(' ==>  ', responseData);
-                arrayMenu.push(responseData);
+                this.arrayMenu.push(responseData);
               });
             });
-            this.popularMenuArray.next(arrayMenu);
         }
-     );
-
-      this.popularMenuArray.subscribe(
-       listMenu => {
-         console.log('LIST MENU ==> ', listMenu);
-       }
      );
 
   }
