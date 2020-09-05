@@ -1,8 +1,8 @@
+import { MenuData } from './../../../shared/model/MenuData.module';
 import { PopularMenuInfo } from './../../../shared/model/PopularMenuInfo.module';
 import { OrderHttpRequestService } from './../../../shared/service/order-http-request.service';
 import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { ContextManagerService } from '../../../shared/service/context-manager.service';
 
 @Component({
   selector: 'app-popular-block',
@@ -11,32 +11,22 @@ import { map } from 'rxjs/operators';
 })
 export class PopularBlockComponent implements OnInit {
 
-  popularMenuArray: Subject<any> = new Subject();
-
-  constructor( private orderHttpRequests: OrderHttpRequestService ) { }
+  arrayMenu: MenuData[] = [];
+  constructor( private orderHttpRequests: OrderHttpRequestService, private contextManagerService: ContextManagerService ) { }
 
   ngOnInit(): void {
       this.orderHttpRequests.getPopularMenus()
       .subscribe(
         (response: PopularMenuInfo[]) => {
-          console.log( 'returned DATA ==> ', response );
-          let arrayMenu: any[] = [];
           response.forEach(element => {
-            console.log('element  ==>  ', element);
             this.orderHttpRequests.getMenuInfo(element.menu).subscribe(
               responseData => {
+                responseData.image = this.contextManagerService.imagePath(responseData.ref);
                 console.log(' ==>  ', responseData);
-                arrayMenu.push(responseData);
+                this.arrayMenu.push(responseData);
               });
             });
-            this.popularMenuArray.next(arrayMenu);
         }
-     );
-
-      this.popularMenuArray.subscribe(
-       listMenu => {
-         console.log('LIST MENU ==> ', listMenu);
-       }
      );
 
   }
