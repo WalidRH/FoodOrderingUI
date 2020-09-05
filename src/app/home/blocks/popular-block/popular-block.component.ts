@@ -2,8 +2,7 @@ import { MenuData } from './../../../shared/model/MenuData.module';
 import { PopularMenuInfo } from './../../../shared/model/PopularMenuInfo.module';
 import { OrderHttpRequestService } from './../../../shared/service/order-http-request.service';
 import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { ContextManagerService } from '../../../shared/service/context-manager.service';
 
 @Component({
   selector: 'app-popular-block',
@@ -13,7 +12,7 @@ import { map } from 'rxjs/operators';
 export class PopularBlockComponent implements OnInit {
 
   arrayMenu: MenuData[] = [];
-  constructor( private orderHttpRequests: OrderHttpRequestService ) { }
+  constructor( private orderHttpRequests: OrderHttpRequestService, private contextManagerService: ContextManagerService ) { }
 
   ngOnInit(): void {
       this.orderHttpRequests.getPopularMenus()
@@ -22,7 +21,7 @@ export class PopularBlockComponent implements OnInit {
           response.forEach(element => {
             this.orderHttpRequests.getMenuInfo(element.menu).subscribe(
               responseData => {
-                responseData.image = '../../../../assets/images/categories/' + responseData.categorie + '/' + responseData.ref + '.jpg',
+                responseData.image = this.contextManagerService.imagePath(responseData.ref);
                 console.log(' ==>  ', responseData);
                 this.arrayMenu.push(responseData);
               });
