@@ -7,6 +7,7 @@ import { DescriptionBlockComponent } from './blocks/description-block/descriptio
 import { StepsComponent } from './blocks/steps/steps.component';
 import { AvantagesBlockComponent } from './blocks/avantages-block/avantages-block.component';
 import { PopularBlockComponent } from './blocks/popular-block/popular-block.component';
+import { ViewCategoriesComponent } from './blocks/view-categories/view-categories.component';
 
 
 
@@ -17,7 +18,8 @@ import { PopularBlockComponent } from './blocks/popular-block/popular-block.comp
     DescriptionBlockComponent,
     StepsComponent,
     AvantagesBlockComponent,
-    PopularBlockComponent
+    PopularBlockComponent,
+    ViewCategoriesComponent
   ],
   imports: [
     CommonModule,
