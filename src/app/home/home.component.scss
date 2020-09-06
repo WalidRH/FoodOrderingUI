@@ -4,6 +4,7 @@ div{
     height: auto
 }
 
+.popular-block
 .steps-block,
 .intro-block{
     background: white;
@@ -17,4 +18,11 @@ div{
 .steps-block{
     padding-bottom: 20px;
     width: calc(100% - 50px);
+}
+
+
+.categories-block{
+    background-image: url("../../assets/images/wallpaperflare.com_wallpaper.jpg");
+    width: 100%;
+    height: 1000px;
 }

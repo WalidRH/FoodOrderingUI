@@ -1,0 +1,11 @@
+<div class="head-block">
+    <p class="head-block__title">VIEW THE DISHES</p>
+    <p class="head-block__sub-title">From the Gallery</p>
+</div>
+<div class="body-block">
+    <div *ngFor="let categorieElement of categorieArray" class="body-block__content">
+        <img [src]="categorieElement.path">
+        <div class="body-block__content-transparency" ></div>
+        <p> {{categorieElement.name}} </p>
+    </div>
+</div>

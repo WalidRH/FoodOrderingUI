@@ -1,0 +1,34 @@
+[
+    {
+        "name":"pizza",
+        "path":"assets/images/categories/pizza/pizza-categorie-image.jpg"
+    },
+    {
+        "name":"sandwich",
+        "path":"assets/images/categories/sandwich/image.jpeg"
+    },
+    {
+        "name":"sushi",
+        "path":"assets/images/categories/sushi/dom-sushi-gdansk.jpg"
+    },
+    {
+        "name":"pasta",
+        "path":"assets/images/categories/pasta/1504715566-delish-fettuccine-alfredo.jpg"
+    },
+    {
+        "name":"plat",
+        "path":"assets/images/categories/plat/10414779.jpg"
+    },
+    {
+        "name":"salade",
+        "path":"assets/images/categories/salade/i97668-salade-de-poulet.jpg"
+    },
+    {
+        "name":"drinks",
+        "path":"assets/images/categories/drinks/alcoholic-non-alcoholic-cocktails-wooden-table-summer-cold-drinks_127657-1.jpg"
+    },
+    {
+        "name":"cakes",
+        "path":"assets/images/categories/cakes/Victoria-sponge-recipe.jpg"
+    }
+]
