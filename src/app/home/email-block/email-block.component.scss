@@ -1,0 +1,59 @@
+.head-block {
+  text-align: center;
+  padding-top: 100px;
+}
+
+.head-block__title {
+  font-family: "Arimo", sans-serif;
+  font-size:200%;
+  padding: 6px;
+  margin: 0px;
+  color: white;
+}
+
+.body-block{
+    text-align: center;
+    margin-top: 70px;
+}
+
+.body-block > input{
+    width: 500px;
+    height: 60px;
+    border: none;
+    border-radius: 40px;
+    background: #5de45b;
+    padding-left: 100px;
+    color: white;
+    font-family: "Arimo", sans-serif;
+    font-size: 110%;
+    vertical-align: middle;
+}
+
+.body-block > input::placeholder{
+    color: white;
+}
+
+.body-block > input:active,
+.body-block > input:focus{
+    outline: none;
+    border: 2px solid white;
+}
+
+.body-block > button{
+    margin: 20px;
+    width: 200px;
+    height: 60px;
+    background-color: white;
+    font-family: "Arimo", sans-serif;
+    font-size: 150%;
+    border: none;
+    border-radius: 40px;
+    outline: none;
+    vertical-align: middle;
+}
+
+.body-block > button:hover{
+    background: black;
+    color: white;
+    cursor: pointer;
+}

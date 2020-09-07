@@ -8,6 +8,8 @@ import { StepsComponent } from './blocks/steps/steps.component';
 import { AvantagesBlockComponent } from './blocks/avantages-block/avantages-block.component';
 import { PopularBlockComponent } from './blocks/popular-block/popular-block.component';
 import { ViewCategoriesComponent } from './blocks/view-categories/view-categories.component';
+import { EmailBlockComponent } from './email-block/email-block.component';
+import { FooterBlockComponent } from './footer-block/footer-block.component';
 
 
 
@@ -19,7 +21,9 @@ import { ViewCategoriesComponent } from './blocks/view-categories/view-categorie
     StepsComponent,
     AvantagesBlockComponent,
     PopularBlockComponent,
-    ViewCategoriesComponent
+    ViewCategoriesComponent,
+    EmailBlockComponent,
+    FooterBlockComponent
   ],
   imports: [
     CommonModule,

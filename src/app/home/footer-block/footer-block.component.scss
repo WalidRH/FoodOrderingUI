@@ -1,0 +1,49 @@
+.content{
+    text-align: center;
+    padding-top: 200px;
+}
+
+.content__address{
+    width: 200px;
+    margin: auto;
+    display: inline-block;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.content__address::first-letter{
+    padding-left: 100px;
+}
+
+.content__logo{
+    font-family: 'Rouge Script', cursive;
+    font-size: 50px;
+    width : 150px;
+    font-weight: bold;    
+    margin: 0px 30px;
+    display: inline-block;
+
+}
+
+.content__phone{
+    display: inline-block;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.content__phone > svg{
+    width: 20px;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.content__phone-number{
+    display: inline-block;
+    margin: 0px;
+    vertical-align: middle;
+}
+.content__phone-title{
+    display: block;
+    color: grey;
+    margin: 0px;
+    vertical-align: middle;
+}

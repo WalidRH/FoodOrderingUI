@@ -10,7 +10,7 @@ import { ContextManagerService } from '../../../shared/service/context-manager.s
 })
 export class ViewCategoriesComponent implements OnInit {
   categorieArray: JSONCategorieMapping[] = new Array<JSONCategorieMapping>();
-  status = true;
+  hovered = false;
 
   constructor(private contextManagerService: ContextManagerService) { }
 
@@ -18,9 +18,18 @@ export class ViewCategoriesComponent implements OnInit {
     // tslint:disable-next-line: no-shadowed-variable
     this.contextManagerService.categoriePath().forEach(element => {
       element.path = '../../../../' + element.path;
+      element.hovering = false;
       this.categorieArray.push(element);
     });
     console.log('ARRAY CATEGORIES ', this.categorieArray);
+  }
+
+  hoverStatusEnter(element: JSONCategorieMapping): void{
+    element.hovering = true;
+  }
+
+  hoverStatusLeave(element: JSONCategorieMapping): void{
+    element.hovering = false;
   }
 
 }
