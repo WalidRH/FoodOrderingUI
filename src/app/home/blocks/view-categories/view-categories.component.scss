@@ -23,9 +23,34 @@
   padding-top: 100px;
 }
 
+.body-block > a {
+  margin-top: 50px;
+  color: #f7f5f5;
+  text-decoration: none;
+  font-family: 'Arimo', sans-serif;
+  font-size: 95%;
+  display: block;
+  text-align: center;
+}
+
+.body-block > a:hover{
+  color: #02ab00;
+}
+
+a > h1 {
+  margin: 20px;
+  font-family: 'Recursive', sans-serif;
+  display: inline-block;
+  font-size: 110%;
+}
+
 .body-block__content {
   display: inline-block;
   margin: 20px;
+}
+
+.body-block__content:hover{
+  cursor: pointer;
 }
 
 .body-block__content-transparency {
@@ -44,7 +69,7 @@
   box-shadow: 0px 1px 20px 7px;
 }
 
-.body-block__content > p {
+.body-block__content p {
   text-align: center;
   font-family: "Arimo", sans-serif;
   font-size: 200%;
@@ -52,7 +77,7 @@
   color: white;
 }
 
-.body-block__content > p {
+.body-block__content p {
   position: absolute;
   transform: translate(-42%, -350%);
   width: 100%;

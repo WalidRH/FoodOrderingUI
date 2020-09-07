@@ -3,9 +3,12 @@
     <p class="head-block__sub-title">From the Gallery</p>
 </div>
 <div class="body-block">
-    <div *ngFor="let categorieElement of categorieArray" class="body-block__content">
+    <div *ngFor="let categorieElement of categorieArray" class="body-block__content" (mouseenter) ="hoverStatusEnter(categorieElement) "  (mouseleave) ="hoverStatusLeave(categorieElement)">
         <img [src]="categorieElement.path">
-        <div class="body-block__content-transparency" ></div>
-        <p> {{categorieElement.name}} </p>
+        <div *ngIf="categorieElement.hovering">
+            <div class="body-block__content-transparency"></div>
+            <p> {{categorieElement.name}} </p>
+        </div>
     </div>
+    <a href="#">Visit Gallery <h1> > </h1> </a>
 </div>
