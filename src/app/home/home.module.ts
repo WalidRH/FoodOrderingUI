@@ -1,3 +1,4 @@
+import { SharedModule } from './../shared/shared.module';
 import { IntroBlockComponent } from './blocks/intro-block/intro-block.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -9,7 +10,6 @@ import { AvantagesBlockComponent } from './blocks/avantages-block/avantages-bloc
 import { PopularBlockComponent } from './blocks/popular-block/popular-block.component';
 import { ViewCategoriesComponent } from './blocks/view-categories/view-categories.component';
 import { EmailBlockComponent } from './email-block/email-block.component';
-import { FooterBlockComponent } from './footer-block/footer-block.component';
 
 
 
@@ -22,12 +22,12 @@ import { FooterBlockComponent } from './footer-block/footer-block.component';
     AvantagesBlockComponent,
     PopularBlockComponent,
     ViewCategoriesComponent,
-    EmailBlockComponent,
-    FooterBlockComponent
+    EmailBlockComponent
   ],
   imports: [
     CommonModule,
-    HomeRouter
+    HomeRouter,
+    SharedModule
   ]
 })
 export class HomeModule { }

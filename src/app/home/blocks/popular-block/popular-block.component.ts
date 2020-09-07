@@ -11,7 +11,7 @@ import { ContextManagerService } from '../../../shared/service/context-manager.s
 })
 export class PopularBlockComponent implements OnInit {
 
-  arrayMenu: MenuData[] = [];
+  arrayPopularMenus: MenuData[] = [];
   constructor( private orderHttpRequests: OrderHttpRequestService, private contextManagerService: ContextManagerService ) { }
 
   ngOnInit(): void {
@@ -23,7 +23,7 @@ export class PopularBlockComponent implements OnInit {
               responseData => {
                 responseData.image = this.contextManagerService.imagePath(responseData.ref);
                 console.log(' ==>  ', responseData);
-                this.arrayMenu.push(responseData);
+                this.arrayPopularMenus.push(responseData);
               });
             });
         }
