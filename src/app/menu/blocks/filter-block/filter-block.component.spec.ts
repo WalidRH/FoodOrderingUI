@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FooterBlockComponent } from './footer-block.component';
+import { FilterBlockComponent } from './filter-block.component';
 
-describe('FooterBlockComponent', () => {
-  let component: FooterBlockComponent;
-  let fixture: ComponentFixture<FooterBlockComponent>;
+describe('FilterBlockComponent', () => {
+  let component: FilterBlockComponent;
+  let fixture: ComponentFixture<FilterBlockComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FooterBlockComponent ]
+      declarations: [ FilterBlockComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FooterBlockComponent);
+    fixture = TestBed.createComponent(FilterBlockComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
