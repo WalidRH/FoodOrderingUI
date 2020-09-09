@@ -16,6 +16,7 @@ export class OrderHttpRequestService {
     );
   }
 
+  // tslint:disable-next-line: typedef
   getMenuInfo(menuId: number){
     let queryParam = new HttpParams();
     queryParam = queryParam.set('id', '' + menuId);
@@ -26,4 +27,13 @@ export class OrderHttpRequestService {
       }
     );
   }
+
+  // tslint:disable-next-line: typedef
+  getAllMenu(){
+    return this.http.get<MenuData[]>(
+      'http://localhost:8080/api/menu/findAll'
+    );
+  }
+
+
 }

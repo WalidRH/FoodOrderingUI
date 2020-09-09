@@ -1,4 +1,6 @@
 [
   { "id":1 ,"path": "../../../../assets/images/categories/plat/1.jpg" },
-  { "id":2, "path": "../../../../assets/images/categories/patte/2.jpg" }
+  { "id":2, "path": "../../../../assets/images/categories/patte/2.jpg" },
+  { "id":3, "path": "../../assets/images/categories/sandwich/burger.jpg" },
+  { "id":4, "path": "../../assets/images/categories/sandwich/shwarma.jpg" }
 ]
