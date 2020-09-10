@@ -3,9 +3,9 @@
 </div>
 <div class="body-block">
     <div class="body-block__filter">
-        <app-filter-block></app-filter-block>
+        <app-filter-block (emitCategorie)="catchEmitedCategorie($event)"></app-filter-block>
     </div>
     <div class="body-block__listDishes">
-        <app-list-dishes></app-list-dishes>
+        <app-list-dishes [categorie]="categorieName"></app-list-dishes>
     </div>
 </div>

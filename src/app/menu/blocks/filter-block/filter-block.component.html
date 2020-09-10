@@ -2,7 +2,7 @@
     <ul>
         <p class="container-title" > Categories </p>
         <li *ngFor="let categorieElement of categorieArray" class="container-element">
-            <a [routerLink]="categorieElement.name"> {{ categorieElement.name }} </a> 
+            <a (click)="sendCategorieName(categorieElement.name)"> {{ categorieElement.name }} </a> 
         </li>
     </ul>
 </div>

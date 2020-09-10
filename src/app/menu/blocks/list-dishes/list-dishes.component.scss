@@ -1,3 +1,23 @@
 .diches-block{
     padding: 20px;
 }
+
+.diches-block__pageNumbers{
+    display: inline-block;
+    cursor: pointer;
+    margin: 7px;
+    font-family: 'Arimo', sans-serif;
+    font-size: 110%;
+    font-weight: bold;
+}
+
+.diches-block__pageNumbers:active,
+.diches-block__pageNumbers:hover{
+    text-decoration: underline;
+    color: #037401;
+}
+
+.diches-block__currentPage{
+    color: #02ab00;
+    font-size: 130%;
+}

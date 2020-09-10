@@ -35,5 +35,16 @@ export class OrderHttpRequestService {
     );
   }
 
+  getListMenu(paramKey: string, paramValue: string){
+    let queryParam = new HttpParams();
+    queryParam = queryParam.set(''+paramKey, '' + paramValue);
+    return this.http.get<MenuData[]>(
+      'http://localhost:8080/api/menu/find',
+      {
+        params: queryParam
+      }
+    );
+  }
+
 
 }
