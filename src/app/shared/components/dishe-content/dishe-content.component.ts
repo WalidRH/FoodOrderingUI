@@ -9,7 +9,7 @@ import { MenuData } from '../../model/MenuData.module';
 export class DisheContentComponent implements OnInit {
 
   @Input() arrayMenu: MenuData[];
-  
+
   constructor() { }
 
   ngOnInit(): void {

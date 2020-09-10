@@ -16,6 +16,7 @@ export class OrderHttpRequestService {
     );
   }
 
+  // tslint:disable-next-line: typedef
   getMenuInfo(menuId: number){
     let queryParam = new HttpParams();
     queryParam = queryParam.set('id', '' + menuId);
@@ -26,4 +27,24 @@ export class OrderHttpRequestService {
       }
     );
   }
+
+  // tslint:disable-next-line: typedef
+  getAllMenu(){
+    return this.http.get<MenuData[]>(
+      'http://localhost:8080/api/menu/findAll'
+    );
+  }
+
+  getListMenu(paramKey: string, paramValue: string){
+    let queryParam = new HttpParams();
+    queryParam = queryParam.set(''+paramKey, '' + paramValue);
+    return this.http.get<MenuData[]>(
+      'http://localhost:8080/api/menu/find',
+      {
+        params: queryParam
+      }
+    );
+  }
+
+
 }

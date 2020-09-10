@@ -10,3 +10,21 @@
     margin: 0px;
     color: white;
 }
+
+.body-block{
+    text-align: center;
+    padding-right: 10%;
+}
+
+.body-block__filter{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.body-block__listDishes{
+    display: inline-block;
+    width: 60%;
+    margin: auto;
+    vertical-align: top;
+}
+

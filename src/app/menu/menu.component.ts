@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
+  categorieName: string = null;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  catchEmitedCategorie(categorieSent: {name: string} ){
+    console.log('CATCHING Categorie :', categorieSent);
+    this.categorieName = categorieSent.name;
   }
 
 }

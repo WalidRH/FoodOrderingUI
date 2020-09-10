@@ -1,0 +1,9 @@
+<div class="diches-block">
+    <div class="diches-block__listDishes">
+        <app-dishe-content [arrayMenu]="listDishes"></app-dishe-content>
+    </div>
+    <div class="diches-block__pages">
+        <div class="diches-block__pageNumbers" *ngFor="let pageNumber of pageArray" (click)="showPage(pageNumber)" [ngClass]="{'diches-block__currentPage' : (pageNumber === currentPage)}">
+            {{ pageNumber }} </div>
+    </div>
+</div>
