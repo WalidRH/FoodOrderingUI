@@ -1,0 +1,26 @@
+.contact-elements{
+    width: 100%;
+    height: 500px;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.contact-element__item{
+    display: inline-block;
+    vertical-align: middle;
+    margin: 50px;
+    padding: 100px;
+    width: 200px;
+    background-color: #f2f2f2;
+    border-radius: 40px;
+}
+
+.contact-element__item > h1{
+    font-family: 'Arimo', sans-serif;
+    font-size: 300%;
+}
+
+.contact-element__item > p{
+    font-family: 'Arimo', sans-serif; 
+    color: #02ab00;
+}

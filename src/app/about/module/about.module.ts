@@ -1,14 +1,17 @@
+import { SharedModule } from './../../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AboutRoute } from './router.module';
+import { AboutComponent } from '../about.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [AboutComponent],
   imports: [
     CommonModule,
-    AboutRoute
+    AboutRoute,
+    SharedModule
   ]
 })
 export class AboutModule { }

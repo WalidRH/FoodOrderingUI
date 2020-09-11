@@ -1,1 +1,7 @@
-<p>contact works!</p>
+<app-header title='CONTACT'></app-header>
+<div class="contact-elements" >
+    <div *ngFor="let contactElement of arrayInfoContact" class="contact-element__item">
+        <h1> {{ contactElement.name }} </h1>
+        <p> {{ contactElement.description }} </p>
+    </div>
+</div>
