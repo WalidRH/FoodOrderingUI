@@ -1,0 +1,78 @@
+.authentication-form-block{
+    width: 50%;
+    text-align: center;
+    margin: 100px auto;
+    background: #02ab00;
+    border-radius: 40px;
+    padding: 100px;
+}
+.authentication-form-block > p{
+    font-family: 'Arimo', sans-serif;
+    font-size: 150%;
+    color: white;
+    margin: 50px;
+}
+
+.authentication-form-block__data{
+    margin: 20px;
+}
+
+
+.authentication-form-block__data-input{
+    font-family: 'Arimo', sans-serif;
+    font-size: 100%;
+    display: block;
+    margin: auto;
+    width: 50%;
+    padding: 20px;
+    border: 3px solid #025c00;
+    border-radius: 40px;
+    outline: none;
+}
+
+.authentication-form-block__data-input:hover,
+.authentication-form-block__data-input:active,
+.authentication-form-block__data-input:focus{
+    border: 5px solid #0b3a0a;
+    box-shadow: 1px 0px 15px 2px;
+}
+
+.authentication-form-block__submition{
+ width: calc(50% + 20px + 3px );
+ margin: auto;
+}
+
+.authentication-form-block__submition > button{
+    width: 200px;
+    height: 50px;
+    font-family: 'Arimo', sans-serif;
+    font-size: 100%;
+    font-weight: bold;
+    text-align: left;
+    margin-left: calc((50% + 20px + 3px) - 200px );
+    outline: none;
+    border-radius: 40px;
+    padding-left: 30px;
+    border: 3px solid #6abd69;
+    background: #025c00;
+    color: white;
+}
+
+.authentication-form-block__submition > button:hover{
+    border: 3px solid #025c00;
+    background: #6abd69;
+    color: black;
+    box-shadow: 1px 0px 15px 2px black;
+}
+
+.authentication-form-block__submition > button:active{
+    background: #0b3a0a;
+    color: white;
+}
+
+.authentication-form-block__submition > a{
+    color: #0b3a0a;
+    font-family: 'Arimo', sans-serif;
+    font-size: 100%;
+    font-weight: bold;
+}
