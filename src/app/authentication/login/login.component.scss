@@ -1,12 +1,12 @@
-.authentication-form-block{
+.authentication-block{
     width: 50%;
     text-align: center;
     margin: 100px auto;
-    background: #02ab00;
+    background-image: url('../../../assets/images/authentication.jpg');
     border-radius: 40px;
     padding: 100px;
 }
-.authentication-form-block > p{
+.authentication-block p{
     font-family: 'Arimo', sans-serif;
     font-size: 150%;
     color: white;
@@ -71,8 +71,35 @@
 }
 
 .authentication-form-block__submition > a{
-    color: #0b3a0a;
+    color: white;
     font-family: 'Arimo', sans-serif;
     font-size: 100%;
     font-weight: bold;
+}
+
+.error-msg{
+    width: 70%;
+}
+
+span{
+    font-family: 'Arimo', sans-serif;
+    font-size: 100%;
+    font-weight: bold;
+    text-align: left;
+    color: rgb(177, 0, 0);
+    width: 50%;
+    margin: 10px;
+}
+
+.errorInput{
+    border: 5px solid red;
+}
+
+.spinner-size{
+    width: 10%;
+    height: 10%;
+}
+
+.authentication-block__form{
+    text-align: right;
 }
