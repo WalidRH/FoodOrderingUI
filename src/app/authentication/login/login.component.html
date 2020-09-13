@@ -1,16 +1,39 @@
 <app-header title='AUTHENTICATE'></app-header>
-<div class="authentication-form-block">
-    <p> Please set your your identifications </p>
-    <form>
-        <div class="authentication-form-block__data">
-            <input type="text" class="authentication-form-block__data-input" placeholder="Email">
+<div class="authentication-block">
+    <div *ngIf='loading'>
+        <p> Loading... </p>
+        <app-spinner></app-spinner>
+    </div>
+    <div *ngIf='!loading'>
+        <div *ngIf='error'>
+            <app-error [errorMessage]="errorMessage"></app-error>
         </div>
-        <div class="authentication-form-block__data">
-            <input type="password" class="authentication-form-block__data-input" placeholder="Password">
+        <div *ngIf='!error'>
+            <p> Please set your your identifications </p>
         </div>
-        <div class="authentication-form-block__submition">
-            <a href='/signup'> You don't have an account? </a>
-            <button type="submit"> Login </button>
-        </div>
-    </form>
+        <form (ngSubmit)="onSubmit()" #authForm="ngForm" class="authentication-block__form">
+            <div class="authentication-form-block__data">
+                <input type="email" class="authentication-form-block__data-input" placeholder="Email" [ngModel]=e_mail
+                    email required #email="ngModel" name="email"
+                    [ngClass]="{'errorInput':(email.invalid && authForm.submitted) }">
+                <div class="error-msg">
+                    <span *ngIf="email.invalid && authForm.submitted"> please set a proper email
+                    </span>
+                </div>
+            </div>
+            <div class="authentication-form-block__data">
+                <input type="password" class="authentication-form-block__data-input" #pass="ngModel"
+                    placeholder="Password" [ngModel]="password" name="pass" required
+                    [ngClass]="{'errorInput':(!pass.dirty && authForm.submitted)}">
+                <div class="error-msg"><span *ngIf="!pass.dirty && authForm.submitted"> please your password </span>
+                </div>
+            </div>
+            <div class="authentication-form-block__submition">
+                <a href='/signup'> You don't have an account? </a>
+                <button type="submit" [disabled]='authForm.invalid'>
+                    Login
+                </button>
+            </div>
+        </form>
+    </div>
 </div>

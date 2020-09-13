@@ -1,0 +1,24 @@
+.error-container{
+    background: rgb(211, 120, 120);
+    width: 60%;
+    border: 3px solid red;
+    border-radius: 40px;
+    text-align: center;
+    margin: auto;
+}
+
+.error-container > img{
+    width: 50px;
+    margin: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.error-container > p{
+    font-family: 'Arimo', sans-serif;
+    font-size: 100%;
+    color: rgb(153, 15, 15);
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: bold;
+}
