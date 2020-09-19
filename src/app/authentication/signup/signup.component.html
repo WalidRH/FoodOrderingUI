@@ -1,1 +1,30 @@
-<p>signup works!</p>
+<app-header title='REGISTER'></app-header>
+<div class="register-block">
+    <form (ngSubmit)="onSubmit()" #registerForm="ngForm" class="register-block__form">
+        <div class="register-form-block__data">
+            <input type="email" class="register-form-block__data-input" placeholder="Email *" [ngModel]=e_mail
+                email required #email="ngModel" name="email">
+        </div>
+        <div class="register-form-block__data">
+            <input type="password" class="register-form-block__data-input" #pass="ngModel"
+                placeholder="Password *" [ngModel]="password" name="pass" required>
+        </div>
+        <div class="register-form-block__data">
+            <input type="text" class="register-form-block__data-input" placeholder="Firstname *" [ngModel]=Fname required #firstname="ngModel" name="firstname">
+        </div>
+        <div class="register-form-block__data">
+            <input type="text" class="register-form-block__data-input" placeholder="Lastname *" [ngModel]=Lname required #lastname="ngModel" name="lastname">
+        </div>
+        <div class="register-form-block__submition">
+            <a href='/login'> Do you have an account? </a>
+            <button type="submit" [disabled]='registerForm.invalid'>
+                SignUP
+            </button>
+        </div>
+    </form>
+</div>
+
+"email": "RahouwWalid17@gmail.com",
+"firstName": "Walid",
+"lastName": "RH",
+"password": "Wal17@"
