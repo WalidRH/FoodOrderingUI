@@ -1,7 +1,8 @@
-import { MenuData } from './../model/MenuData.module';
+import { MenuData } from './../../model/MenuData.module';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { PopularMenuInfo } from '../model/PopularMenuInfo.module';
+import { PopularMenuInfo } from '../../model/PopularMenuInfo.module';
+import { HttpManagerModule } from '../../model/http-manager.module';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class OrderHttpRequestService {
 
   getPopularMenus(): any {
     return this.http.get<PopularMenuInfo[]>(
-      'http://localhost:8080/api/order/OrderedMenus/popular'
+      HttpManagerModule.httpHost + '/order/OrderedMenus/popular'
     );
   }
 
@@ -21,7 +22,7 @@ export class OrderHttpRequestService {
     let queryParam = new HttpParams();
     queryParam = queryParam.set('id', '' + menuId);
     return this.http.get<MenuData>(
-      'http://localhost:8080/api/menu/find',
+      HttpManagerModule.httpHost + '/menu/find',
       {
         params: queryParam
       }
@@ -31,15 +32,15 @@ export class OrderHttpRequestService {
   // tslint:disable-next-line: typedef
   getAllMenu(){
     return this.http.get<MenuData[]>(
-      'http://localhost:8080/api/menu/findAll'
+      HttpManagerModule.httpHost + '/menu/findAll'
     );
   }
 
   getListMenu(paramKey: string, paramValue: string){
     let queryParam = new HttpParams();
-    queryParam = queryParam.set(''+paramKey, '' + paramValue);
+    queryParam = queryParam.set('' + paramKey, '' + paramValue);
     return this.http.get<MenuData[]>(
-      'http://localhost:8080/api/menu/find',
+      HttpManagerModule.httpHost + '/menu/find',
       {
         params: queryParam
       }
