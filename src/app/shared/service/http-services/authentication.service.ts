@@ -1,8 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from '../model/User.module';
+import { User } from '../../model/User.module';
 import { tap } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
+import { HttpManagerModule } from '../../model/http-manager.module';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class AuthenticationService {
     queryParams = queryParams.append('password', '' + password);
     console.log('HTTP params ', queryParams);
     return this.http.get<User>(
-      'http://localhost:8080/api/auth/login', {
+      HttpManagerModule.httpHost + '/auth/login', {
         params : queryParams
       }
     ).pipe(

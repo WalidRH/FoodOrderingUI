@@ -1,6 +1,6 @@
 import { MenuData } from './../../../shared/model/MenuData.module';
 import { PopularMenuInfo } from './../../../shared/model/PopularMenuInfo.module';
-import { OrderHttpRequestService } from './../../../shared/service/order-http-request.service';
+import { OrderHttpRequestService } from './../../../shared/service/http-services/order-http-request.service';
 import { Component, OnInit } from '@angular/core';
 import { ContextManagerService } from '../../../shared/service/context-manager.service';
 

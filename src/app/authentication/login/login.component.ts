@@ -1,4 +1,4 @@
-import { AuthenticationService } from './../../shared/service/authentication.service';
+import { AuthenticationService } from './../../shared/service/http-services/authentication.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
