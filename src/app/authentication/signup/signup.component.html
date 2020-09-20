@@ -1,30 +1,60 @@
 <app-header title='REGISTER'></app-header>
 <div class="register-block">
-    <form (ngSubmit)="onSubmit()" #registerForm="ngForm" class="register-block__form">
-        <div class="register-form-block__data">
-            <input type="email" class="register-form-block__data-input" placeholder="Email *" [ngModel]=e_mail
-                email required #email="ngModel" name="email">
+    <div *ngIf='isLoading'>
+        <p> Loading... </p>
+        <app-spinner></app-spinner>
+    </div>
+    <div *ngIf='!isLoading'>
+        <div *ngIf='errorOccured'>
+            <app-error [errorMessage]="errorMessage"></app-error>
         </div>
-        <div class="register-form-block__data">
-            <input type="password" class="register-form-block__data-input" #pass="ngModel"
-                placeholder="Password *" [ngModel]="password" name="pass" required>
+        <div *ngIf='!errorOccured'>
+            <p> Please set your informations </p>
         </div>
-        <div class="register-form-block__data">
-            <input type="text" class="register-form-block__data-input" placeholder="Firstname *" [ngModel]=Fname required #firstname="ngModel" name="firstname">
-        </div>
-        <div class="register-form-block__data">
-            <input type="text" class="register-form-block__data-input" placeholder="Lastname *" [ngModel]=Lname required #lastname="ngModel" name="lastname">
-        </div>
-        <div class="register-form-block__submition">
-            <a href='/login'> Do you have an account? </a>
-            <button type="submit" [disabled]='registerForm.invalid'>
-                SignUP
-            </button>
-        </div>
-    </form>
+        <form (ngSubmit)="onSubmit()" #registerForm="ngForm" class="register-block__form">
+            <div class="register-form-block__data">
+                <input type="email" class="register-form-block__data-input" placeholder="Email *" [ngModel]=e_mail email
+                    required #email="ngModel" name="email"
+                    [ngClass]="{'input-error':(email.invalid && registerForm.submitted) }">
+                <div class="error-msg" *ngIf="email.invalid && registerForm.submitted">
+                    <span> please set a proper email
+                    </span>
+                </div>
+            </div>
+            <div class="register-form-block__data">
+                <input type="password" class="register-form-block__data-input" #pass="ngModel" placeholder="Password *"
+                    [ngModel]="password" name="pass" required
+                    [ngClass]="{'input-error':(!pass.dirty && registerForm.submitted) }">
+                <div class="error-msg" *ngIf="!pass.dirty && registerForm.submitted">
+                    <span> please set a password
+                    </span>
+                </div>
+            </div>
+            <div class="register-form-block__data">
+                <input type="text" class="register-form-block__data-input" placeholder="Firstname *" [ngModel]=Fname
+                    required #firstname="ngModel" name="firstname"
+                    [ngClass]="{'input-error':(!firstname.dirty && registerForm.submitted) }">
+                <div class="error-msg" *ngIf="!firstname.dirty && registerForm.submitted">
+                    <span> please set your Firstname
+                    </span>
+                </div>
+            </div>
+            <div class="register-form-block__data">
+                <input type="text" class="register-form-block__data-input" placeholder="Lastname *" [ngModel]=Lname
+                    required #lastname="ngModel" name="lastname"
+                    [ngClass]="{'input-error':(!lastname.dirty && registerForm.submitted) }">
+                <div class="error-msg" *ngIf="!lastname.dirty && registerForm.submitted">
+                    <span> please set your Lastname
+                    </span>
+                </div>
+            </div>
+            <div class="register-form-block__submition">
+                <a href='/login'> Do you have an account? </a>
+                <button type="submit"
+                    [ngClass]="{ 'register-form-block__submition-disabled':(registerForm.invalid), 'register-form-block__submition-valid': (registerForm.valid) }">
+                    SignUP
+                </button>
+            </div>
+        </form>
+    </div>
 </div>
-
-"email": "RahouwWalid17@gmail.com",
-"firstName": "Walid",
-"lastName": "RH",
-"password": "Wal17@"
