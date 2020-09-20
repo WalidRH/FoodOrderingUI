@@ -10,7 +10,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
   declarations: [
     AppComponent,
     NavBarComponent,
-    FooterComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

@@ -38,4 +38,13 @@ export class AuthenticationService {
       user
     );
   }
+
+  autoLogin(){
+    const user: User = JSON.parse(localStorage.getItem('UserInfo'));
+    if ( !user ){
+      return;
+    }
+    this.authenticatedUser.next(user);
+  }
+
 }

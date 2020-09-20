@@ -1,3 +1,4 @@
+import { AuthenticationService } from './../shared/service/http-services/authentication.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,11 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
-  menuItems: string[] = ['home', 'menu', 'contacts', 'about', 'login', 'signup'];
+  menuItems: string[] = ['home', 'menu', 'contacts', 'about', 'login', 'signup', 'orders'];
 
-  constructor() { }
+  constructor(private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
+
+    this.authenticationService.authenticatedUser.subscribe(
+      authenticatedUser => {
+        if (!!authenticatedUser){
+
+        }
+      }
+    );
+
   }
 
 }

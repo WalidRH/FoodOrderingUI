@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthenticationGuardService } from './shared/service/authentication-guard.service';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -8,7 +9,10 @@ const routes: Routes = [
   { path: 'contacts', loadChildren: () => import('./contact/module/contact.module').then(m => m.ContactModule) },
   { path: 'about', loadChildren: () => import('./about/module/about.module').then(m => m.AboutModule)},
   { path: 'login', loadChildren: () => import('./authentication/login/module/login.module').then(m => m.LoginModule)},
-  { path: 'signup', loadChildren: () => import('./authentication/signup/module/signup.module').then(m => m.SignupModule)}
+  { path: 'signup', loadChildren: () => import('./authentication/signup/module/signup.module').then(m => m.SignupModule)},
+  { path: 'orders',
+   loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule),
+   canActivate: [AuthenticationGuardService]}
 ];
 
 @NgModule({

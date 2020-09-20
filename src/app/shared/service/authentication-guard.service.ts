@@ -15,10 +15,11 @@ export class AuthenticationGuardService implements CanActivate{
  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
   console.log('Route ', route);
   console.log('State ', state);
-
+  this.authenticationService.autoLogin();
   return this.authenticationService.authenticatedUser.pipe(
     map(
       authenticatedUser => {
+        console.log('USER ', authenticatedUser);
         return !!authenticatedUser;
       }
     ),
