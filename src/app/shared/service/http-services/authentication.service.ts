@@ -30,4 +30,12 @@ export class AuthenticationService {
       )
     );
   }
+
+  signup(user: User): any{
+    console.log('USER ::> ', user);
+    return this.http.post<User>(
+      HttpManagerModule.httpHost + '/auth/signup',
+      user
+    );
+  }
 }

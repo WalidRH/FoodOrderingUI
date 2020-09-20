@@ -9,28 +9,29 @@
             <app-error [errorMessage]="errorMessage"></app-error>
         </div>
         <div *ngIf='!error'>
-            <p> Please set your your identifications </p>
+            <p> Please set your identifications </p>
         </div>
         <form (ngSubmit)="onSubmit()" #authForm="ngForm" class="authentication-block__form">
             <div class="authentication-form-block__data">
-                <input type="email" class="authentication-form-block__data-input" placeholder="Email" [ngModel]=e_mail
+                <input type="email" class="authentication-form-block__data-input" placeholder="Email *" [ngModel]=e_mail
                     email required #email="ngModel" name="email"
                     [ngClass]="{'errorInput':(email.invalid && authForm.submitted) }">
-                <div class="error-msg">
-                    <span *ngIf="email.invalid && authForm.submitted"> please set a proper email
+                <div class="error-msg" *ngIf="email.invalid && authForm.submitted">
+                    <span> please set a proper email
                     </span>
                 </div>
             </div>
             <div class="authentication-form-block__data">
                 <input type="password" class="authentication-form-block__data-input" #pass="ngModel"
-                    placeholder="Password" [ngModel]="password" name="pass" required
+                    placeholder="Password *" [ngModel]="password" name="pass" required
                     [ngClass]="{'errorInput':(!pass.dirty && authForm.submitted)}">
-                <div class="error-msg"><span *ngIf="!pass.dirty && authForm.submitted"> please your password </span>
+                <div class="error-msg" *ngIf="!pass.dirty && authForm.submitted"><span> please your set a password </span>
                 </div>
             </div>
             <div class="authentication-form-block__submition">
                 <a href='/signup'> You don't have an account? </a>
-                <button type="submit" [disabled]='authForm.invalid'>
+                <button type="submit" 
+                [ngClass]="{ 'authentication-form-block__submition-disabled':(authForm.invalid), 'authentication-form-block__submition-valid': (authForm.valid) }">
                     Login
                 </button>
             </div>
