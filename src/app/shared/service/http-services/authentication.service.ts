@@ -39,6 +39,11 @@ export class AuthenticationService {
     );
   }
 
+  logout(){
+    this.authenticatedUser.next(null);
+    localStorage.setItem('UserInfo', JSON.stringify(null));
+  }
+
   autoLogin(){
     const user: User = JSON.parse(localStorage.getItem('UserInfo'));
     if ( !user ){
@@ -46,5 +51,6 @@ export class AuthenticationService {
     }
     this.authenticatedUser.next(user);
   }
+
 
 }

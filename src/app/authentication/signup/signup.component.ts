@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { User } from './../../shared/model/User.module';
 import { AuthenticationService } from './../../shared/service/http-services/authentication.service';
 import { NgForm } from '@angular/forms';
@@ -20,7 +21,7 @@ export class SignupComponent implements OnInit {
   errorOccured = false;
   RESPONSE_FAILED = 'FAILED';
   errorMessage: string = null;
-  constructor( private authenticationService: AuthenticationService ) { }
+  constructor( private authenticationService: AuthenticationService, private route: Router ) { }
 
   ngOnInit(): void {
   }
@@ -37,7 +38,7 @@ export class SignupComponent implements OnInit {
       this.authenticationService.signup(user).subscribe(
         response => {
           this.isLoading = false;
-          this.errorOccured = true;
+          this.errorOccured = false;
           console.log('REGISTRATION', response);
           if ( response.Registration === this.RESPONSE_FAILED){
             this.errorOccured = true;
@@ -57,10 +58,10 @@ export class SignupComponent implements OnInit {
   private loginUser(email: string, password: string){
     this.authenticationService.login(email, password).subscribe(
       reponse => {
-        alert('SUCCESS');
+        this.route.navigate(['orders']);
       },
       error => {
-        alert('ERROR');
+        this.route.navigate(['login']);
       }
     );
   }

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthenticationService } from './../../shared/service/http-services/authentication.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   loading = false;
   error = false;
   errorMessage: string;
-  constructor(private authenticationService: AuthenticationService) {}
+  constructor(private authenticationService: AuthenticationService, private route: Router) {}
 
   ngOnInit(): void {}
 
@@ -31,7 +32,7 @@ export class LoginComponent implements OnInit {
           (responseData) => {
             this.loading = false;
             this.error = false;
-            console.log(' responseData ==> ', responseData);
+            this.route.navigate(['orders']);
           },
           (error) => {
             this.loading = false;
