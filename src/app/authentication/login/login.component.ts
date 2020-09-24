@@ -1,3 +1,5 @@
+import { NotificationModule } from './../../shared/model/notification.module';
+import { SharedUtilsService } from './../../shared/service/shared-utils.service';
 import { Router } from '@angular/router';
 import { AuthenticationService } from './../../shared/service/http-services/authentication.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -15,7 +17,7 @@ export class LoginComponent implements OnInit {
   loading = false;
   error = false;
   errorMessage: string;
-  constructor(private authenticationService: AuthenticationService, private route: Router) {}
+  constructor(private authenticationService: AuthenticationService, private route: Router, private notifMessage: SharedUtilsService) {}
 
   ngOnInit(): void {}
 
@@ -32,6 +34,8 @@ export class LoginComponent implements OnInit {
           (responseData) => {
             this.loading = false;
             this.error = false;
+            const notification = new NotificationModule(' Welcome ' + responseData.firstName, 'SUCCESS');
+            this.notifMessage.notificationMessage.next( notification );
             this.route.navigate(['orders']);
           },
           (error) => {

@@ -8,3 +8,11 @@
     background: #f2f2f2;
     padding-bottom: 20px;
 }
+
+.notification-area{
+    position: fixed;
+    left: 50%;
+    top: 60px;
+    transform: translateX(-50%);
+    text-align: center;
+}

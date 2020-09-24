@@ -1,0 +1,37 @@
+.container{
+    padding: 30px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+
+
+.container-success{
+    border: 3px solid #6abd69;
+    background: #025c00;
+    color: white;
+}
+
+.container-failed{
+    background: #FFCC00;
+    border: 3px solid rgb(233, 215, 142);
+    color: black;
+}
+
+.container-warning > svg{
+    width: 50px;
+}
+
+.container-warning{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.container p{
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 20px;
+}

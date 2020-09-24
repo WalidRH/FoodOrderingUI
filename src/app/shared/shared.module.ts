@@ -4,11 +4,18 @@ import { DisheContentComponent } from './components/dishe-content/dishe-content.
 import { HeaderComponent } from './components/header/header.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { ErrorComponent } from './components/error/error.component';
+import { NotificationComponent } from './components/notification/notification.component';
 
 
 
 @NgModule({
-  declarations: [DisheContentComponent, HeaderComponent, SpinnerComponent, ErrorComponent],
+  declarations: [
+    DisheContentComponent,
+    HeaderComponent,
+    SpinnerComponent,
+    ErrorComponent,
+    NotificationComponent
+  ],
   imports: [
     CommonModule
   ],
@@ -16,7 +23,8 @@ import { ErrorComponent } from './components/error/error.component';
     DisheContentComponent,
     HeaderComponent,
     SpinnerComponent,
-    ErrorComponent
+    ErrorComponent,
+    NotificationComponent
   ]
 })
 export class SharedModule { }
