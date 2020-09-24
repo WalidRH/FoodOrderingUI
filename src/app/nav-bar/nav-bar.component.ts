@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthenticationService } from './../shared/service/http-services/authentication.service';
 import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 
@@ -11,7 +12,7 @@ export class NavBarComponent implements OnInit,OnChanges {
 
   menuItems: string[] = ['home', 'menu', 'contacts', 'about', 'login', 'signup'];
 
-  constructor(private authenticationService: AuthenticationService) { }
+  constructor(private authenticationService: AuthenticationService, private route: Router) { }
 
   ngOnInit(): void {
     this.authenticationService.autoLogin();
@@ -24,7 +25,7 @@ export class NavBarComponent implements OnInit,OnChanges {
 
   onLogout(){
     this.authenticationService.logout();
-    
+    this.route.navigate(['login']);
   }
 
   setNavBar(){
