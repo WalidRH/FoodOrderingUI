@@ -1,5 +1,6 @@
+import { MenuData } from './../../model/MenuData.module';
+import { Router } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
-import { MenuData } from '../../model/MenuData.module';
 
 @Component({
   selector: 'app-dishe-content',
@@ -10,9 +11,18 @@ export class DisheContentComponent implements OnInit {
 
   @Input() arrayMenu: MenuData[];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    
+  }
+
+  orderThisMeal(mealElement: MenuData){
+    this.router.navigate(['/orderMeal'], {
+      queryParams: {
+        Meal_id: mealElement.ref
+      }
+    });
   }
 
 }

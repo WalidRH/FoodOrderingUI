@@ -2,6 +2,7 @@ import { RoleGuardService } from './shared/service/role-guard.service';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthenticationGuardService } from './shared/service/authentication-guard.service';
+import { OrderMealModule } from './order-meal/module/order-meal.module';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -17,6 +18,10 @@ const routes: Routes = [
   },
   { path: 'cart',
    loadChildren: () => import('./cart/cart.module').then(m => m.CartModule),
+   canActivate: [AuthenticationGuardService]
+  },
+  { path: 'orderMeal',
+   loadChildren: () => import('./order-meal/module/order-meal.module').then(m => m.OrderMealModule),
    canActivate: [AuthenticationGuardService]
   }
 ];
