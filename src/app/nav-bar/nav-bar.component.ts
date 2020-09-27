@@ -46,4 +46,8 @@ export class NavBarComponent implements OnInit,OnChanges {
     );
   }
 
+  mybasketClick(){
+    this.route.navigate(['mybasket']);
+  }
+
 }

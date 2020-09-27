@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './shared/components/footer/footer.component';
-import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
