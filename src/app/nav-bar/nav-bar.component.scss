@@ -65,6 +65,7 @@ button{
     background: white;
     margin-left: 20px;
     outline: none;
+    cursor: pointer;
 }
 
 button > p {
@@ -73,6 +74,7 @@ button > p {
     vertical-align: middle;
     display: inline-block;
     margin-left: 5px;
+    cursor: pointer;
 }
 
 button:active,
