@@ -15,8 +15,8 @@ const routes: Routes = [
    loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule),
    canActivate: [RoleGuardService]
   },
-  { path: 'mybasket',
-   loadChildren: () => import('./my-basket/module/my-basket.module').then(m => m.MyBasketModule),
+  { path: 'cart',
+   loadChildren: () => import('./cart/cart.module').then(m => m.CartModule),
    canActivate: [AuthenticationGuardService]
   }
 ];
