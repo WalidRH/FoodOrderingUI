@@ -1,6 +1,6 @@
 import { element } from 'protractor';
 import { MenuData } from './../../../shared/model/MenuData.module';
-import { OrderHttpRequestService } from './../../../shared/service/http-services/order-http-request.service';
+import { MenuHttpRequestService } from './../../../shared/service/http-services/menu-http-request.service';
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ContextManagerService } from '../../../shared/service/context-manager.service';
 
@@ -11,7 +11,7 @@ import { ContextManagerService } from '../../../shared/service/context-manager.s
 })
 export class ListDishesComponent implements OnInit, OnChanges {
   constructor(
-    private orderHttpRequestService: OrderHttpRequestService,
+    private MenuHttpRequestService: MenuHttpRequestService,
     private contextManagerService: ContextManagerService
   ) {}
   @Input() categorie: string;
@@ -28,7 +28,7 @@ export class ListDishesComponent implements OnInit, OnChanges {
 
   ngOnChanges( changes: SimpleChanges ): void{
     console.log('INPUT :: categorie ', this.categorie);
-    this.orderHttpRequestService.getListMenu(this.PARAM_KEY, this.categorie).subscribe(
+    this.MenuHttpRequestService.getListMenu(this.PARAM_KEY, this.categorie).subscribe(
       responseData => {
         console.log('ARRAY ' + this.categorie + ' => ', responseData);
         this.mapperSetter(responseData);
@@ -66,7 +66,7 @@ export class ListDishesComponent implements OnInit, OnChanges {
   }
 
   private getAll() {
-    this.orderHttpRequestService.getAllMenu().subscribe((responseData) => {
+    this.MenuHttpRequestService.getAllMenu().subscribe((responseData) => {
       this.mapperSetter(responseData);
     });
   }

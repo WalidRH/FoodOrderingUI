@@ -7,7 +7,7 @@ import { HttpManagerModule } from '../../model/http-manager.module';
 @Injectable({
   providedIn: 'root'
 })
-export class OrderHttpRequestService {
+export class MenuHttpRequestService {
 
   constructor( private http: HttpClient ) { }
 
