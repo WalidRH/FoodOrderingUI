@@ -26,7 +26,8 @@ export class AuthenticationGuardService implements CanActivate{
     // redirect if the user is not authenticated
     tap(
       authenticatedUser => {
-        if (!authenticatedUser) {
+        console.log(' is authenticated ', authenticatedUser);
+        if (!authenticatedUser ) {
           this.router.navigate(['/login']);
         }
         return authenticatedUser;

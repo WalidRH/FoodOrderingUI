@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
             this.error = false;
             const notification = new NotificationModule(' Welcome ' + responseData.firstName, 'SUCCESS');
             this.notifMessage.notificationMessage.next( notification );
-            this.route.navigate(['orders']);
+            this.route.navigate(['home']);
           },
           (error) => {
             this.loading = false;

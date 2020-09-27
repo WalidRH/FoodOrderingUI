@@ -1,3 +1,4 @@
+import { RoleGuardService } from './shared/service/role-guard.service';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthenticationGuardService } from './shared/service/authentication-guard.service';
@@ -12,7 +13,12 @@ const routes: Routes = [
   { path: 'signup', loadChildren: () => import('./authentication/signup/module/signup.module').then(m => m.SignupModule)},
   { path: 'orders',
    loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule),
-   canActivate: [AuthenticationGuardService]}
+   canActivate: [RoleGuardService]
+  },
+  { path: 'mybasket',
+   loadChildren: () => import('./my-basket/module/my-basket.module').then(m => m.MyBasketModule),
+   canActivate: [AuthenticationGuardService]
+  }
 ];
 
 @NgModule({
