@@ -1,5 +1,8 @@
 <app-header title='ORDERING'></app-header>
 <div class="orderContent">
+    <div *ngIf="error">
+        <app-error [errorMessage]="errorMessage"></app-error>
+    </div>
     <div *ngIf="!error">
         <img [src]="orderedMeal.image" class="orderContent-img">
         <form (ngSubmit)="onSubmit()" #orderForm="ngForm" class="orderContent-form">

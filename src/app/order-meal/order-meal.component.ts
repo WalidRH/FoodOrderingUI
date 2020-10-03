@@ -1,9 +1,13 @@
+import { AuthenticationService } from './../shared/service/http-services/authentication.service';
+import { SharedUtilsService } from './../shared/service/shared-utils.service';
+import { OrderHttpRequestService } from './../shared/service/http-services/order-http-request.service';
 import { NgForm } from '@angular/forms';
 import { MenuData } from './../shared/model/MenuData.module';
 import { Component, OnInit, ViewChild, OnChanges } from '@angular/core';
 import { MenuHttpRequestService } from '../shared/service/http-services/menu-http-request.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ContextManagerService } from '../shared/service/context-manager.service';
+import { NotificationModule } from '../shared/model/notification.module';
 
 @Component({
   selector: 'app-order-meal',
@@ -21,7 +25,11 @@ export class OrderMealComponent implements OnInit {
   constructor(
     private menuRequestService: MenuHttpRequestService,
     private activeRoute: ActivatedRoute,
-    private contextManagerService: ContextManagerService
+    private contextManagerService: ContextManagerService,
+    private orderHttpRequestService: OrderHttpRequestService,
+    private utilService: SharedUtilsService,
+    private router: Router,
+    private authenticationService: AuthenticationService
     ) { }
 
   ngOnInit(): void {
@@ -48,10 +56,23 @@ export class OrderMealComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log("FORM ", this.formOrder);
+    console.log('FORM ', this.formOrder);
     if ( !this.formOrder.controls.quantity.dirty ){
       this.quantity = '1';
     }
+    const orderBody = {
+      quantity: this.quantity
+    };
+    this.orderHttpRequestService.setOrder(this.mealId, orderBody).subscribe(
+      responseData => {
+        this.utilService.notificationMessage.next(new NotificationModule('Your order is been submitted', 'SUCCESS'));
+      },
+      error => {
+        this.utilService.notificationMessage.next(new NotificationModule(error.error.message, 'FAILED'));
+        this.authenticationService.authenticatedUser.next(null);
+        this.router.navigate(['/login']);
+      }
+    );
   }
 
 }
