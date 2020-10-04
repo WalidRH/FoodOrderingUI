@@ -10,6 +10,8 @@ import { HttpManagerModule } from '../../model/http-manager.module';
 })
 export class AuthenticationService {
 
+  public ROLE_ADMIN = 'ADMIN';
+  public ROLE_USER = 'USER';
   constructor( private http: HttpClient ) { }
   authenticatedUser = new BehaviorSubject<User>(null);
   login(email: string , password: string): any{

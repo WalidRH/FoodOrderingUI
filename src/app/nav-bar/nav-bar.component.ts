@@ -7,7 +7,7 @@ import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.scss']
 })
-export class NavBarComponent implements OnInit,OnChanges {
+export class NavBarComponent implements OnInit, OnChanges {
 
 
   menuItems: string[] = ['home', 'menu', 'contacts', 'about', 'login', 'signup'];
@@ -35,8 +35,10 @@ export class NavBarComponent implements OnInit,OnChanges {
         console.log('authenticated user ', !authenticatedUser); //is Null
         console.log('authenticated user ', !!authenticatedUser); // is Not Null
         if (!!authenticatedUser){
-          this.menuItems.splice(4, 1, 'orders');
-          this.menuItems.splice(5, 1, 'logout');
+           ( authenticatedUser.role === this.authenticationService.ROLE_ADMIN )
+           ? this.menuItems.splice(4, 1, 'orders')
+           : this.menuItems.splice(4, 2);
+           this.menuItems.splice(5, 1, 'logout');
         }
         else{
           this.menuItems.splice(4, 1, 'login');
