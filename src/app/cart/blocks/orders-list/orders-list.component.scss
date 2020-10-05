@@ -1,0 +1,72 @@
+table, th, td{
+    margin: 0px;  
+    border-collapse: collapse;
+}
+
+.table-orders{
+    width: 100%;
+    font-family: 'Arimo', sans-serif;
+    font-size: 100%;
+}
+
+.table-orders tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+.table-header{
+    text-align: center;
+    background: #025c00;
+    color: white;
+}
+
+.cl_item,
+.cl_price,
+.cl_quantity,
+.cl_total-price{
+    padding: 25px;
+}
+
+.order-row_delete,
+.order-row_image,
+.order-row_name,
+.order-row_price,
+.order-row_quantity,
+.order-row_totalPrice{
+    padding: 15px;
+    vertical-align: middle;
+}
+
+.cl_item,
+.order-row_name{
+    text-align: left;
+}
+
+.order-row_price,
+.order-row_totalPrice{
+    font-family: 'Arimo', sans-serif;
+    font-size: 120%;
+    font-weight: bolder;
+    color: #129610;
+}
+
+.orderContent-form_quantity{
+    width: 20%;
+    margin: auto;
+    font-family: "Arimo", sans-serif;
+    font-size: 100%;
+    border: 2px solid #025c00;
+    border-radius: 50px;
+    padding: 10px;
+    outline: none;
+}
+
+.order-row_delete > button{
+    background: red;
+    color: white;
+    font-weight: bold;
+    font-size: 100%;
+    overflow: hidden;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+}

@@ -3,15 +3,17 @@ import { CartComponent } from './cart.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartRouter } from './router.module';
-
+import { OrdersListComponent } from './blocks/orders-list/orders-list.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [CartComponent],
+  declarations: [CartComponent, OrdersListComponent],
   imports: [
     CommonModule,
     CartRouter,
-    SharedModule
+    SharedModule,
+    FormsModule
   ]
 })
 export class CartModule { }

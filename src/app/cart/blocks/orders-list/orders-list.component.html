@@ -1,0 +1,27 @@
+<form #arrayOrdersForm="ngForm">
+    <table class="table-orders">
+        <tr class="table-header">
+            <th>
+                
+            </th>
+            <th></th>
+            <th class="cl_item">ITEM</th>
+            <th class="cl_price">PRICE</th>
+            <th class="cl_quantity">QUANTITY</th>
+            <th class="cl_total-price">TOTAL PRICE</th>
+        </tr>
+        <tr *ngFor="let element of orderItemsArray" class="order-row">
+            <td class="order-row_delete">
+                <button (click)=remove(element.ref)>X</button>
+            </td>
+            <td class="order-row_image"></td>
+            <td class="order-row_name">{{element.menu.name | uppercase}}</td>
+            <td class="order-row_price">{{element.menu.price}} DH</td>
+            <td class="order-row_quantity">
+                <input type="number" [(ngModel)]="element.quantity" name="element.ref" min="1" class="orderContent-form_quantity" [value]="element.quantity" >
+                {{ element.quantity }}
+            </td>
+            <td class="order-row_totalPrice">{{element.totalPrice}} DH</td>
+        </tr>
+    </table>
+</form>
