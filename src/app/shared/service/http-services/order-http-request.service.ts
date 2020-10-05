@@ -1,22 +1,34 @@
+import { SharedUtilsService } from './../shared-utils.service';
+import { Subject } from 'rxjs';
 import { HttpManagerModule } from './../../model/http-manager.module';
 import { AuthenticationService } from './authentication.service';
 import { HttpParams, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Order } from '../../model/order.module';
+import { stringify } from 'querystring';
+import { NotificationModule } from '../../model/notification.module';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderHttpRequestService {
-
-  constructor( private http: HttpClient, private authenticationService: AuthenticationService ) { }
+  
+  public PARAM_ORDER_ID = 'id';
+  public PARAM_ORDER_STATUS = 'status';
+  public PARAM_ORDER_DATE = 'orderDate';
+  public PARAM_ORDER_CLIENT_EMAIL = 'emailClient';
+  public STATUS_SUBMITTED = 'Submitted';
+  public STATUS_VALIDE = 'Valide';
+  public STATUS_PREPARED = 'OnPrepared';
+  public STATUS_SERVED = 'OnServed';
+  ordersArraySubject = new Subject<Order[]>();
+  constructor( private http: HttpClient, private authenticationService: AuthenticationService, private utilService: SharedUtilsService ) { }
 
   // make order
   setOrder(menuId: number, body: any){
     let queryParam = new HttpParams();
     let userEmail: string;
-    this.authenticationService.authenticatedUser.subscribe(
-      userData => userEmail = userData.email
-    );
+    userEmail = this.getAuthenticatedUserEmail();
     queryParam = queryParam.set('email', userEmail);
     queryParam = queryParam.append('idMenu', '' + menuId);
     console.log('query param', queryParam);
@@ -31,9 +43,82 @@ export class OrderHttpRequestService {
 
   //edit Order
 
+  editOrder( orderData: Order ){
+    return this.http.put<Order>(
+      HttpManagerModule.httpHost + '/order/editOrder',
+      orderData
+    );
+  }
+
   //find Order
+
+  getOrder( serchParam: string, searchValue: any ){
+    let httpParams = new HttpParams();
+    httpParams = httpParams.set('' + serchParam, '' + searchValue);
+    return this.http.get<any>(
+      HttpManagerModule.httpHost + '/order/findOrder',
+      {
+        params: httpParams
+      }
+    );
+  }
 
   // find pre-booked
 
+  getPreBooked(reserveDate: string){
+    let httpParams = new HttpParams();
+    httpParams = httpParams.set('reserveDate', reserveDate);
+    return this.http.get<Order[]>(
+      HttpManagerModule.httpHost + '/order/PreBookingOrders',
+      {
+        params: httpParams
+      }
+    );
+  }
+
   //find ordered menus
+
+  getOrderedItems(){
+    return this.http.get<Order[]>(
+      HttpManagerModule.httpHost + '/order/OrderedMenus'
+    );
+  }
+
+  findOrderItemsToValidate(): void{
+    let ordersArray: Order[] = [];
+    this.getOrder(this.PARAM_ORDER_CLIENT_EMAIL, this.getAuthenticatedUserEmail()).subscribe(
+      responseData => {
+        console.log('RESPONSE DATA ', responseData);
+        if ( !!responseData ){
+          responseData.forEach(element => {
+            if ( element.trackingStatus === this.STATUS_SUBMITTED ){
+              ordersArray.push(element);
+            }
+          });
+        }
+        this.ordersArraySubject.next(ordersArray);
+      },
+      error => {
+        this.authenticationService.logout();
+        this.utilService.notificationMessage.next(new NotificationModule(error.error.message, 'FAILED'));
+      }
+    );
+  }
+
+  private getAuthenticatedUserEmail(): string{
+    let userEmail: string;
+    this.authenticationService.authenticatedUser.subscribe(
+      userData => {
+        if ( !userData ){
+          console.log('USER DATA empty ', userData);
+          userEmail = null;
+        }
+        else{
+          userEmail = userData.email;
+        }
+      }
+    );
+    return userEmail;
+  }
+
 }
