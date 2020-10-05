@@ -18,8 +18,7 @@
             <td class="order-row_name">{{element.menu.name | uppercase}}</td>
             <td class="order-row_price">{{element.menu.price}} DH</td>
             <td class="order-row_quantity">
-                <input type="number" [(ngModel)]="element.quantity" name="element.ref" min="1" class="orderContent-form_quantity" [value]="element.quantity" >
-                {{ element.quantity }}
+                <input type="number" [(ngModel)]="element.quantity" [name]="element.quantity" min="1" class="orderContent-form_quantity">
             </td>
             <td class="order-row_totalPrice">{{element.totalPrice}} DH</td>
         </tr>
