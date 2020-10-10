@@ -26,6 +26,10 @@ table, th, td{
     padding: 25px;
 }
 
+td {
+    height: 100px;
+}
+
 .order-row_delete,
 .order-row_image,
 .order-row_name,
@@ -34,6 +38,11 @@ table, th, td{
 .order-row_totalPrice{
     padding: 15px;
     vertical-align: middle;
+}
+
+.order-row_image > img{
+    height: 80%;
+    border-radius: 10px;
 }
 
 .cl_item,
@@ -69,4 +78,5 @@ table, th, td{
     border: none;
     border-radius: 5px;
     padding: 7px 10px;
+    cursor: pointer;
 }

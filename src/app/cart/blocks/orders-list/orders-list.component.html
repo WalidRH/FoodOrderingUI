@@ -14,7 +14,9 @@
             <td class="order-row_delete">
                 <button (click)=remove(element.ref)>X</button>
             </td>
-            <td class="order-row_image"></td>
+            <td class="order-row_image">
+                <img [src]="element.menu.image">
+            </td>
             <td class="order-row_name">{{element.menu.name | uppercase}}</td>
             <td class="order-row_price">{{element.menu.price}} DH</td>
             <td class="order-row_quantity">
@@ -22,5 +24,7 @@
             </td>
             <td class="order-row_totalPrice">{{element.totalPrice}} DH</td>
         </tr>
+        
+        <tr></tr>
     </table>
 </form>
