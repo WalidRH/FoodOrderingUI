@@ -1,8 +1,8 @@
-<form #arrayOrdersForm="ngForm">
+<form (ngSubmit)="onSubmit()" #arrayOrdersForm="ngForm">
     <table class="table-orders">
         <tr class="table-header">
             <th>
-                
+
             </th>
             <th></th>
             <th class="cl_item">ITEM</th>
@@ -20,11 +20,30 @@
             <td class="order-row_name">{{element.menu.name | uppercase}}</td>
             <td class="order-row_price">{{element.menu.price}} DH</td>
             <td class="order-row_quantity">
-                <input type="number" [(ngModel)]="element.quantity" [name]="element.quantity" min="1" class="orderContent-form_quantity">
+                <input type="number" [(ngModel)]="element.quantity" [name]="element.quantity" min="1"
+                    class="orderContent-form_quantity" #quantity>
             </td>
-            <td class="order-row_totalPrice">{{element.totalPrice}} DH</td>
+            <td class="order-row_totalPrice"> {{ element.menu.price * quantity.value }} DH
+            </td>
         </tr>
-        
-        <tr></tr>
     </table>
+    <hr class="separator-horizontal">
+    <div class="submit-container">
+        <div class="pre-booking">
+            <div class="switch">
+                <input id="switch-1" type="checkbox" class="switch-input" [(ngModel)]="preBooking" [name]="preBooking" min="1"
+                    #preBook />
+                <label for="switch-1" class="switch-label">Switch</label>
+            </div>
+            <label class="label-preBook"> PRE-BOOKING ? </label>
+            <div *ngIf="preBook.checked" class="nbr-people">
+                <div class="separator-vertical"></div>
+                <label class="label-preBook"> How many people ? </label>
+                <input type="number" min="1" class="orderContent-form_quantity">
+            </div>
+        </div>
+        <button type="submit">
+            <p>UPDATE CART</p>
+        </button>
+    </div>
 </form>
