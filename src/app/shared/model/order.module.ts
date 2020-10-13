@@ -1,13 +1,15 @@
 import { MenuData } from './MenuData.module';
 import { User } from './User.module';
-export interface Order {
-  ref: number;
-  quantity: number;
-  trackingStatus: string;
-  orderDate: string;
-  totalPrice: number;
-  serveDate?: string;
-  nbPreson?: string;
-  client?: User;
-  menu?: MenuData;
+export class Order {
+  constructor(
+  public ref: number,
+  public quantity: number,
+  public trackingStatus: string,
+  public orderDate: string,
+  public totalPrice: number,
+  public serveDate?: string,
+  public nbPreson?: string,
+  public client?: User,
+  public menu?: MenuData
+  ){}
 }

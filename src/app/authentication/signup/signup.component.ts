@@ -1,8 +1,10 @@
+import { SharedUtilsService } from './../../shared/service/shared-utils.service';
 import { Router } from '@angular/router';
 import { User } from './../../shared/model/User.module';
 import { AuthenticationService } from './../../shared/service/http-services/authentication.service';
 import { NgForm } from '@angular/forms';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { NotificationModule } from '../../shared/model/notification.module';
 
 @Component({
   selector: 'app-signup',
@@ -21,7 +23,9 @@ export class SignupComponent implements OnInit {
   errorOccured = false;
   RESPONSE_FAILED = 'FAILED';
   errorMessage: string = null;
-  constructor( private authenticationService: AuthenticationService, private route: Router ) { }
+  constructor( private authenticationService: AuthenticationService,
+               private route: Router,
+               private sharedUtilsService: SharedUtilsService ) { }
 
   ngOnInit(): void {
   }
@@ -34,7 +38,9 @@ export class SignupComponent implements OnInit {
         this.registeredData.form.value.firstname,
         this.registeredData.form.value.lastname,
         this.registeredData.form.value.email,
-        this.registeredData.form.value.pass);
+        'USER');
+        user.password = this.registeredData.form.value.pass;
+        console.log('USER : ',user );
       this.authenticationService.signup(user).subscribe(
         response => {
           this.isLoading = false;
@@ -43,7 +49,8 @@ export class SignupComponent implements OnInit {
           if ( response.Registration === this.RESPONSE_FAILED){
             this.errorOccured = true;
           }else{
-            this.loginUser(user.email, user._password);
+            this.loginUser(user.email, user.password);
+            this.sharedUtilsService.notificationMessage.next(new NotificationModule(response.Registration, 'SUCCESS'));
           }
         },
         error => {
@@ -57,8 +64,8 @@ export class SignupComponent implements OnInit {
 
   private loginUser(email: string, password: string){
     this.authenticationService.login(email, password).subscribe(
-      reponse => {
-        this.route.navigate(['orders']);
+      response => {
+        this.route.navigate(['home']);
       },
       error => {
         this.route.navigate(['login']);

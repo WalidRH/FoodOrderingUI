@@ -1,3 +1,4 @@
+import { ContextManagerService } from './../context-manager.service';
 import { SharedUtilsService } from './../shared-utils.service';
 import { Subject } from 'rxjs';
 import { HttpManagerModule } from './../../model/http-manager.module';
@@ -22,7 +23,13 @@ export class OrderHttpRequestService {
   public STATUS_PREPARED = 'OnPrepared';
   public STATUS_SERVED = 'OnServed';
   ordersArraySubject = new Subject<Order[]>();
-  constructor( private http: HttpClient, private authenticationService: AuthenticationService, private utilService: SharedUtilsService ) { }
+  
+  constructor(
+    private http: HttpClient,
+    private authenticationService: AuthenticationService,
+    private utilService: SharedUtilsService,
+    private contextManagerService: ContextManagerService
+    ) { }
 
   // make order
   setOrder(menuId: number, body: any){
@@ -55,7 +62,7 @@ export class OrderHttpRequestService {
   getOrder( serchParam: string, searchValue: any ){
     let httpParams = new HttpParams();
     httpParams = httpParams.set('' + serchParam, '' + searchValue);
-    return this.http.get<any>(
+    return this.http.get<Order[]>(
       HttpManagerModule.httpHost + '/order/findOrder',
       {
         params: httpParams
@@ -84,6 +91,21 @@ export class OrderHttpRequestService {
     );
   }
 
+  // delete order
+
+  deleteOrder(idOrder: string){
+    let httpParams = new HttpParams();
+    httpParams = httpParams.set('id', idOrder);
+    return this.http.delete<any>(
+      HttpManagerModule.httpHost + '/order/DeleteOrder',
+      {
+        params: httpParams
+      }
+    );
+  }
+
+  // HTTP request - find list of order to validate depending on authenticated user
+
   findOrderItemsToValidate(): void{
     let ordersArray: Order[] = [];
     this.getOrder(this.PARAM_ORDER_CLIENT_EMAIL, this.getAuthenticatedUserEmail()).subscribe(
@@ -92,6 +114,8 @@ export class OrderHttpRequestService {
         if ( !!responseData ){
           responseData.forEach(element => {
             if ( element.trackingStatus === this.STATUS_SUBMITTED ){
+              console.log('Image Path', this.contextManagerService.imagePath(element.menu.ref));
+              element.menu.image = this.contextManagerService.imagePath(element.menu.ref);
               ordersArray.push(element);
             }
           });
@@ -120,5 +144,6 @@ export class OrderHttpRequestService {
     );
     return userEmail;
   }
+
 
 }

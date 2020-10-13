@@ -2,4 +2,37 @@
     width: 60%;
     margin: 100px auto;
     text-align: center;
+    position: relative;
 }
+
+.separator-horizontal{
+    width: 100%;
+}
+
+button{
+    position: absolute;
+    bottom: 5%;
+    right: 0%;
+    margin-right: 10px;
+    width: 200px;
+    background-color: #02ab00;
+    border-radius: 30px;
+    outline: none;
+    border: 2px solid #025c00;
+
+}  
+  button:active,
+  button:hover {
+    background: #025c00;
+    border: 2px solid #02ab00;
+    cursor: pointer;
+  }
+
+  button > p {
+    font-family: "Arimo", sans-serif;
+    font-size: 120%;
+    vertical-align: center;
+    color: white;
+    display: inline-block;
+    font-weight: bold;
+  }

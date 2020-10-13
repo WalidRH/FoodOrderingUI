@@ -4,8 +4,8 @@ export class User{
   public lastName: string,
   public email: string,
   public role: string,
+  private _password?: string,
   private _idclient?: string,
-  private password?: string,
   // tslint:disable-next-line: variable-name
   private _token?: string
  ){}
@@ -14,8 +14,12 @@ export class User{
     return this._token;
   }
 
-  get _password(): string{
+  get password(): string{
     return this.password;
+  }
+
+  set password(password: string){
+    this._password = password;
   }
 
   get idclient(): string{
