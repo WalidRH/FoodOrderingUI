@@ -104,6 +104,8 @@ export class OrderHttpRequestService {
     );
   }
 
+  // HTTP request - find list of order to validate depending on authenticated user
+
   findOrderItemsToValidate(): void{
     let ordersArray: Order[] = [];
     this.getOrder(this.PARAM_ORDER_CLIENT_EMAIL, this.getAuthenticatedUserEmail()).subscribe(

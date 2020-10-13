@@ -2,6 +2,15 @@
 
 <main class="content">
     <section>
-        <app-orders-list></app-orders-list>
+        <form (ngSubmit)="onSubmit()" #arrayOrdersForm="ngForm">
+        <app-orders-list [orderItemsArray]="orderItemsArray"></app-orders-list>
+        <hr class="separator-horizontal">
+        <app-pre-booking [preBookingOrder]="preBooking"></app-pre-booking>
+        <button type="submit">
+            <p>UPDATE CART</p>
+        </button>
+    </form>
+
+    {{ preBooking.nbPreson }}
     </section>
 </main>

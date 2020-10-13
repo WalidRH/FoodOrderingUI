@@ -1,0 +1,23 @@
+<div class="pre-booking">
+    <div class="switch">
+        <input id="switch-1" type="checkbox" class="switch-input" [(ngModel)]="preBooking" [name]="preBooking" min="1"
+            #preBook />
+        <label for="switch-1" class="switch-label">Switch</label>
+    </div>
+    <label class="label-preBook"> PRE-BOOKING ? </label>
+    <div *ngIf="preBook.checked" class="pre-booking_settings">
+        <table>
+            <tr>
+               <td> <label class="label-preBook"> How many people ? </label> </td>
+                <td><input type="number" min="1" class="orderContent-form" [(ngModel)]="preBookingOrder.nbPreson" [name]="preBookingOrder.nbPreson" ></td>
+            </tr>
+            <tr>
+                <td><label class="label-preBook"> You arrive after </label></td>
+                <td>
+                    <input type="number" min="1" max="13" value ="1" class="orderContent-form" [(ngModel)]="preBookingOrder.serveDate" [name]="preBookingOrder.serveDate" >
+                    <label class="suffix-hour"> Hour </label>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

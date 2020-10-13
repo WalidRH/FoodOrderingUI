@@ -5,10 +5,11 @@ import { CommonModule } from '@angular/common';
 import { CartRouter } from './router.module';
 import { OrdersListComponent } from './blocks/orders-list/orders-list.component';
 import { FormsModule } from '@angular/forms';
+import { PreBookingComponent } from './blocks/pre-booking/pre-booking.component';
 
 
 @NgModule({
-  declarations: [CartComponent, OrdersListComponent],
+  declarations: [CartComponent, OrdersListComponent, PreBookingComponent],
   imports: [
     CommonModule,
     CartRouter,
