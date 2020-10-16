@@ -1,6 +1,7 @@
+import { OrderHttpRequestService } from './../shared/service/http-services/order-http-request.service';
+import { element } from 'protractor';
 import { Order } from './../shared/model/order.module';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { OrderHttpRequestService } from '../shared/service/http-services/order-http-request.service';
 import { SharedUtilsService } from '../shared/service/shared-utils.service';
 import { Router } from '@angular/router';
 import { NotificationModule } from '../shared/model/notification.module';
@@ -32,7 +33,7 @@ export class CartComponent implements OnInit {
     console.log('MY ORDERS LIST ', this.orderItemsArray);
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.orderItemsArray.length === 0) {
       this.utilService.notificationMessage.next(
         new NotificationModule(
@@ -47,5 +48,28 @@ export class CartComponent implements OnInit {
       console.log('arriveDate ', this.preBooking.serveDate);
       console.log('FORM ', this.arrayOrdersForm);
     }
+    this.updateOrderItem(this.orderItemsArray, this.orderHttpService.STATUS_VALID);
   }
+
+  updateOrderItem(arrayOrders: Order[], status: string): void {
+    arrayOrders.forEach(orderItem => {
+      this.setOrderItemProperties(orderItem, status);
+      this.orderHttpService.editOrder(orderItem).subscribe(
+        response => {
+          console.log('Updating order item ', orderItem);
+          console.log('Order state updated ', response);
+        }
+      );
+    });
+  }
+
+  setOrderItemProperties( orderItem: Order, status: string ): void{
+    if ( !!this.preBooking.nbPreson && !!this.preBooking.serveDate && !!this.orderItemsArray ){
+        orderItem.nbPreson = this.preBooking.nbPreson;
+        orderItem.serveDate = this.preBooking.serveDate;
+    }
+    orderItem.trackingStatus = status;
+  }
+
+
 }
