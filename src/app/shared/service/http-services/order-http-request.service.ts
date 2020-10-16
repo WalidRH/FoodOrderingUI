@@ -19,9 +19,10 @@ export class OrderHttpRequestService {
   public PARAM_ORDER_DATE = 'orderDate';
   public PARAM_ORDER_CLIENT_EMAIL = 'emailClient';
   public STATUS_SUBMITTED = 'Submitted';
-  public STATUS_VALIDE = 'Valide';
+  public STATUS_VALID = 'Valid';
   public STATUS_PREPARED = 'OnPrepared';
   public STATUS_SERVED = 'OnServed';
+  public CLOSING_HOUR = 22;
   ordersArraySubject = new Subject<Order[]>();
   
   constructor(

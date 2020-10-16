@@ -9,12 +9,12 @@
         <table>
             <tr>
                <td> <label class="label-preBook"> How many people ? </label> </td>
-                <td><input type="number" min="1" class="orderContent-form" [(ngModel)]="preBookingOrder.nbPreson" [name]="preBookingOrder.nbPreson" ></td>
+                <td><input type="number" min="1" class="orderContent-form" [(ngModel)]="preBookingOrder.nbPreson" [name]="preBookingOrder.nbPreson" #nbPerson></td>
             </tr>
             <tr>
                 <td><label class="label-preBook"> You arrive after </label></td>
                 <td>
-                    <input type="number" min="1" max="13" value ="1" class="orderContent-form" [(ngModel)]="preBookingOrder.serveDate" [name]="preBookingOrder.serveDate" >
+                    <input type="number" min="1" [max]="maxHour" value ="1" class="orderContent-form" [(ngModel)]="preBookingOrder.serveDate" [name]="preBookingOrder.serveDate" #serveDate>
                     <label class="suffix-hour"> Hour </label>
                 </td>
             </tr>
