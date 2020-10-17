@@ -6,6 +6,7 @@ import { SharedUtilsService } from '../shared/service/shared-utils.service';
 import { Router } from '@angular/router';
 import { NotificationModule } from '../shared/model/notification.module';
 import { NgForm } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-cart',
@@ -15,11 +16,13 @@ import { NgForm } from '@angular/forms';
 export class CartComponent implements OnInit {
   orderItemsArray: Order[];
   preBooking: Order;
+  loading = false;
   @ViewChild('arrayOrdersForm') arrayOrdersForm: NgForm;
   constructor(
     private orderHttpService: OrderHttpRequestService,
     private utilService: SharedUtilsService,
-    private route: Router
+    private route: Router,
+    private datepipe: DatePipe
   ) {
     this.preBooking = new Order(0, 0, null, null, 0, null, null);
   }
@@ -48,6 +51,7 @@ export class CartComponent implements OnInit {
       console.log('arriveDate ', this.preBooking.serveDate);
       console.log('FORM ', this.arrayOrdersForm);
     }
+    this.loading = true;
     this.updateOrderItem(this.orderItemsArray, this.orderHttpService.STATUS_VALID);
   }
 
@@ -56,6 +60,7 @@ export class CartComponent implements OnInit {
       this.setOrderItemProperties(orderItem, status);
       this.orderHttpService.editOrder(orderItem).subscribe(
         response => {
+          this.loading = false;
           console.log('Updating order item ', orderItem);
           console.log('Order state updated ', response);
         }
@@ -66,7 +71,9 @@ export class CartComponent implements OnInit {
   setOrderItemProperties( orderItem: Order, status: string ): void{
     if ( !!this.preBooking.nbPreson && !!this.preBooking.serveDate && !!this.orderItemsArray ){
         orderItem.nbPreson = this.preBooking.nbPreson;
-        orderItem.serveDate = this.preBooking.serveDate;
+        orderItem.serveDate = this.datepipe.transform(new Date().setHours(new Date().getHours() + +this.preBooking.serveDate), 'yyyy-MM-dd\'T\'HH:mm:ss');
+        console.log('SERVE DATE ', orderItem.serveDate);
+
     }
     orderItem.trackingStatus = status;
   }

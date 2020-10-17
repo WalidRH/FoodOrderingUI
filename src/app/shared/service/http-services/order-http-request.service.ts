@@ -23,6 +23,7 @@ export class OrderHttpRequestService {
   public STATUS_PREPARED = 'OnPrepared';
   public STATUS_SERVED = 'OnServed';
   public CLOSING_HOUR = 22;
+  public OPENING_HOUR = 1;
   ordersArraySubject = new Subject<Order[]>();
   
   constructor(
