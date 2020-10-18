@@ -6,4 +6,7 @@
     <div class="body-block__listDishes">
         <app-list-dishes [categorie]="categorieName"></app-list-dishes>
     </div>
+    <div *ngIf="isAdmin" class="body-block__addMenu">
+        <app-add-block></app-add-block>
+    </div>
 </div>

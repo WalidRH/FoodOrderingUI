@@ -1,6 +1,7 @@
 .body-block{
     text-align: center;
     padding-right: 10%;
+    position: relative;
 }
 
 .body-block__filter{
@@ -14,4 +15,8 @@
     margin: auto;
     vertical-align: top;
 }
-
+.body-block__addMenu{
+    position: sticky;
+    bottom: 10%;
+    text-align: right;
+}
