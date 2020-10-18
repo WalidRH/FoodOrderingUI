@@ -31,6 +31,15 @@
                 </div>
             </div>
             <div class="register-form-block__data">
+                <input type="text" class="register-form-block__data-input" placeholder="Phone Number *" [ngModel]=Pnumber
+                    required #phone="ngModel" name="phone"
+                    [ngClass]="{'input-error':(!phone.dirty && registerForm.submitted) }">
+                <div class="error-msg" *ngIf="!phone.dirty && registerForm.submitted">
+                    <span> please set your Phone Number
+                    </span>
+                </div>
+            </div>
+            <div class="register-form-block__data">
                 <input type="text" class="register-form-block__data-input" placeholder="Firstname *" [ngModel]=Fname
                     required #firstname="ngModel" name="firstname"
                     [ngClass]="{'input-error':(!firstname.dirty && registerForm.submitted) }">

@@ -8,6 +8,10 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
   { path: 'menu', loadChildren: () => import('./menu/module/menu.module').then(m => m.MenuModule) },
+  { path: 'edit-menu',
+    loadChildren: () => import('./menu/edit-menu/module/menu-edit.module').then(m => m.EditMenuModule),
+   canActivate: [RoleGuardService]
+  },
   { path: 'contacts', loadChildren: () => import('./contact/module/contact.module').then(m => m.ContactModule) },
   { path: 'about', loadChildren: () => import('./about/module/about.module').then(m => m.AboutModule)},
   { path: 'login', loadChildren: () => import('./authentication/login/module/login.module').then(m => m.LoginModule)},

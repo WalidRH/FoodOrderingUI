@@ -28,7 +28,7 @@ export class RoleGuardService implements CanActivate {
     return this.authenticationService.authenticatedUser.pipe(
       map((authenticatedUser) => {
         console.log(' authenticated ? ', !!authenticatedUser, ' ROLE ', authenticatedUser.role );
-        if (!!authenticatedUser && authenticatedUser.role === 'ADMIN') {
+        if (!!authenticatedUser && authenticatedUser.role === this.authenticationService.ROLE_ADMIN ) {
           console.log('Is ADMIN TRUE');
           return true;
         } else {
