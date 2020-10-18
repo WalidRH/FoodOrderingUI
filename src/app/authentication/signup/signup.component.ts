@@ -18,6 +18,7 @@ export class SignupComponent implements OnInit {
   password = '';
   Fname = '';
   Lname = '';
+  Pnumber = '';
   test = true;
   isLoading = false;
   errorOccured = false;
@@ -38,8 +39,8 @@ export class SignupComponent implements OnInit {
         this.registeredData.form.value.firstname,
         this.registeredData.form.value.lastname,
         this.registeredData.form.value.email,
-        'USER');
-        user.password = this.registeredData.form.value.pass;
+        'USER', this.registeredData.form.value.phone);
+        user._password = this.registeredData.form.value.pass;
         console.log('USER : ',user );
       this.authenticationService.signup(user).subscribe(
         response => {
@@ -49,7 +50,7 @@ export class SignupComponent implements OnInit {
           if ( response.Registration === this.RESPONSE_FAILED){
             this.errorOccured = true;
           }else{
-            this.loginUser(user.email, user.password);
+            this.loginUser(user.email, user._password);
             this.sharedUtilsService.notificationMessage.next(new NotificationModule(response.Registration, 'SUCCESS'));
           }
         },
