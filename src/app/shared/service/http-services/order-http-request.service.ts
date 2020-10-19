@@ -1,3 +1,4 @@
+import { element } from 'protractor';
 import { ContextManagerService } from './../context-manager.service';
 import { SharedUtilsService } from './../shared-utils.service';
 import { Subject } from 'rxjs';
@@ -116,8 +117,8 @@ export class OrderHttpRequestService {
         if ( !!responseData ){
           responseData.forEach(element => {
             if ( element.trackingStatus === this.STATUS_SUBMITTED ){
-              console.log('Image Path', this.contextManagerService.imagePath(element.menu.ref));
-              element.menu.image = this.contextManagerService.imagePath(element.menu.ref);
+              this.contextManagerService.imagePath(element.menu);
+              console.log('Image Path', element.menu.image);
               ordersArray.push(element);
             }
           });

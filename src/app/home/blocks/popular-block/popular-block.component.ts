@@ -21,7 +21,7 @@ export class PopularBlockComponent implements OnInit {
           response.forEach(element => {
             this.menuHttpRequests.getMenuInfo(element.menu).subscribe(
               responseData => {
-                responseData.image = this.contextManagerService.imagePath(responseData.ref);
+                this.contextManagerService.imagePath(responseData);
                 console.log(' ==>  ', responseData);
                 this.arrayPopularMenus.push(responseData);
               });
