@@ -1,0 +1,31 @@
+.list-menu-containt {
+  margin: 50px 0px;
+  width: 100%;
+  position: relative;
+}
+
+.separator {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  bottom: 10%;
+  border: 5px solid #025c00;
+}
+
+.list-menu{
+    position: relative;
+    left: 10%;
+    right: 10%;
+}
+
+.new-menu-description{
+    position: relative;
+    left: 60%;
+    right: 10%;
+}
+
+.separator,
+.list-menu,
+.new-menu-description{
+    display: inline-block;
+}

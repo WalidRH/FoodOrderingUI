@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
   { path: 'menu', loadChildren: () => import('./menu/module/menu.module').then(m => m.MenuModule) },
-  { path: 'edit-menu',
+  { path: 'menu/add',
     loadChildren: () => import('./menu/edit-menu/module/menu-edit.module').then(m => m.EditMenuModule),
    canActivate: [RoleGuardService]
   },
