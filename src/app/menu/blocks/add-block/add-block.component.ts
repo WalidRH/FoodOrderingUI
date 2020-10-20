@@ -14,7 +14,7 @@ export class AddBlockComponent implements OnInit {
   }
 
   onAddMenu(){
-    this.router.navigate(['/edit-menu']);
+    this.router.navigate(['menu/add']);
   }
 
 }
