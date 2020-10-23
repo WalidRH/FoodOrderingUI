@@ -23,6 +23,7 @@ export class AddMenuComponent implements OnInit, AfterViewChecked {
   newMenu: MenuData = new MenuData();
   fileData = new FileReader();
   imgReaderResult: string | ArrayBuffer = null;
+  displayImage = false;
   constructor(private contextManagerService: ContextManagerService) {}
   categorieArray: JSONCategorieMapping[] = new Array<JSONCategorieMapping>();
   ngOnInit(): void {
@@ -36,6 +37,7 @@ export class AddMenuComponent implements OnInit, AfterViewChecked {
 
   onChange(event: Event) {
     console.log('EVENT LOAD FIlE ', event);
+    this.displayImage = true;
     let file = (event.target as HTMLInputElement).files[0];
     this.fileData.onload = (progressEvent) => {
       // The file's text will be printed here
@@ -48,5 +50,10 @@ export class AddMenuComponent implements OnInit, AfterViewChecked {
 
   onSubmit() {
     console.log('NG-FORM', this.ngFormAdd);
+  }
+
+  onCancel(){
+    this.imgReaderResult = null;
+    this.displayImage = false;
   }
 }

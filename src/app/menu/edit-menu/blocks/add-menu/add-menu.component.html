@@ -1,9 +1,10 @@
 <div class="container">
     <form (ngSubmit)="onSubmit()" #ngFormAdd="ngForm">
         <div class="image-section">
-            <label class="label-form__image"> Image </label>
-            <input class="input-form__image" type="file" [(ngModel)]="image" name="image" (change)="onChange($event)">
-            <img [src]="imgReaderResult">
+            <img [src]="imgReaderResult" class="display-image" *ngIf="displayImage">
+            <button (click)="onCancel()" class="cancel-image" *ngIf="displayImage"> Cancel </button>
+            <label class="label-form__image" *ngIf="!displayImage" > Image </label>
+            <input class="input-form__image" *ngIf="!displayImage"  type="file" [(ngModel)]="image" name="image" (change)="onChange($event)">
         </div>
         <div class="meal-detail">
             <label class="label-form"> Name </label>
