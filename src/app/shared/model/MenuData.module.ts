@@ -1,4 +1,4 @@
-export interface MenuData{
+export class MenuData{
     categorie: string;
     name: string;
     price: number;
