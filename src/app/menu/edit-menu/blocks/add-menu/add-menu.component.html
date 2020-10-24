@@ -1,1 +1,19 @@
-<p>add-menu works!</p>
+<div class="container">
+    <form (ngSubmit)="onSubmit()" #ngFormAdd="ngForm">
+        <div class="image-section">
+            <img [src]="imgReaderResult" class="display-image" *ngIf="displayImage">
+            <button (click)="onCancel()" class="cancel-image" *ngIf="displayImage"> Cancel </button>
+            <label class="label-form__image" *ngIf="!displayImage" > Image </label>
+            <input class="input-form__image" *ngIf="!displayImage"  type="file" [(ngModel)]="image" name="image" (change)="onChange($event)">
+        </div>
+        <div class="meal-detail">
+            <select class="input-form" [(ngModel)]="newMenu.categorie" name="categorie" required>
+                <option value="" selected data-default disabled>Please Select a Categorie...</option>
+                <option *ngFor="let element of categorieArray" [value]="element.name"> {{element.name}} </option>
+            </select>
+            <input class="input-form" type="text" [(ngModel)]="menuName" name="menuName" placeholder="Meal Name">
+            <input class="input-form" type="number" [(ngModel)]="price" name="price" placeholder="Price">
+        </div>
+        <button class="form-submit"> SUBMIT </button>
+    </form>
+</div>
