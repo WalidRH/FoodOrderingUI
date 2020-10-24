@@ -7,15 +7,13 @@
             <input class="input-form__image" *ngIf="!displayImage"  type="file" [(ngModel)]="image" name="image" (change)="onChange($event)">
         </div>
         <div class="meal-detail">
-            <label class="label-form"> Name </label>
-            <input class="input-form" type="text" [(ngModel)]="menuName" name="menuName">
-            <label class="label-form"> Categorie </label>
-            <select class="input-form" [(ngModel)]="newMenu.categorie" name="categorie">
+            <select class="input-form" [(ngModel)]="newMenu.categorie" name="categorie" required>
+                <option value="" selected data-default disabled>Please Select a Categorie...</option>
                 <option *ngFor="let element of categorieArray" [value]="element.name"> {{element.name}} </option>
             </select>
-            <label class="label-form"> Price </label>
-            <input class="input-form" type="number" [(ngModel)]="price" name="price">
+            <input class="input-form" type="text" [(ngModel)]="menuName" name="menuName" placeholder="Meal Name">
+            <input class="input-form" type="number" [(ngModel)]="price" name="price" placeholder="Price">
         </div>
-        <button> SUBMIT </button>
+        <button class="form-submit"> SUBMIT </button>
     </form>
 </div>
