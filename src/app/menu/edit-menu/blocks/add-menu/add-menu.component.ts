@@ -39,17 +39,17 @@ export class AddMenuComponent implements OnInit, AfterViewChecked {
     console.log('EVENT LOAD FIlE ', event);
     this.displayImage = true;
     let file = (event.target as HTMLInputElement).files[0];
+    this.fileData.readAsDataURL(file);
     this.fileData.onload = (progressEvent) => {
       // The file's text will be printed here
       console.log('IMAGE :: WAL', progressEvent.target.result);
       this.imgReaderResult = progressEvent.target.result;
     };
-    this.fileData.readAsDataURL(file);
-
   }
 
   onSubmit() {
     console.log('NG-FORM', this.ngFormAdd);
+    console.log('IMAGE ', this.image);
   }
 
   onCancel(){
