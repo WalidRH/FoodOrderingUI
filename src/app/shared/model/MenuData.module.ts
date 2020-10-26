@@ -4,4 +4,5 @@ export class MenuData{
     price: number;
     ref: number;
     image?: string;
+    imagePath?: string;
 }

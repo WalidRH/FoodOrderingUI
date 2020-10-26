@@ -15,7 +15,7 @@ export class ContextManagerService {
 
   imagePath(menu: MenuData) {
       console.log('image menu ==> ', menu.image);
-      menu.image = '../../../assets/images/categories/' + menu.categorie + '/' + menu.image;
+      menu.imagePath = '../../../assets/images/categories/' + menu.categorie + '/' + menu.image;
   }
 
   categoriePath(): JSONCategorieMapping[] {

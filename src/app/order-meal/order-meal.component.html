@@ -4,7 +4,7 @@
         <app-error [errorMessage]="errorMessage"></app-error>
     </div>
     <div *ngIf="!error">
-        <img [src]="orderedMeal.image" class="orderContent-img">
+        <img [src]="orderedMeal.imagePath" class="orderContent-img">
         <form (ngSubmit)="onSubmit()" #orderForm="ngForm" class="orderContent-form">
             <label class="orderContent-form_name"> {{ orderedMeal.name | uppercase}} </label>
             <input type="number" [(ngModel)]="quantity" name="quantity" min="1" class="orderContent-form_quantity" placeholder="Quantity">
