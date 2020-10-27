@@ -1,8 +1,10 @@
-export class MenuData{
-    categorie: string;
-    name: string;
-    price: number;
-    ref: number;
-    image?: string;
-    imagePath?: string;
+export class MenuData {
+  constructor(
+    public categorie: string,
+    public name: string,
+    public price: number,
+    public ref?: number,
+    public image?: string,
+    public imagePath?: any
+  ) {}
 }
