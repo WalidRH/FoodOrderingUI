@@ -19,14 +19,17 @@ import { MenuHttpRequestService } from '../../../../shared/service/http-services
 export class AddMenuComponent implements OnInit, AfterViewChecked {
   @ViewChild('ngFormAdd') ngFormAdd: NgForm;
   image = '';
-  menuName = '';
-  price = '';
   newMenu: MenuData = new MenuData(null, null, null);
   fileData = new FileReader();
   imageFile: File;
   imgReaderResult: string | ArrayBuffer = null;
   displayImage = false;
-  constructor(private contextManagerService: ContextManagerService, private menuHttpService: MenuHttpRequestService) {}
+
+  error = false;
+  constructor(
+    private contextManagerService: ContextManagerService,
+    private menuHttpService: MenuHttpRequestService
+  ) {}
   categorieArray: JSONCategorieMapping[] = new Array<JSONCategorieMapping>();
   ngOnInit(): void {
     this.categorieArray = this.contextManagerService.categoriePath();
@@ -39,11 +42,16 @@ export class AddMenuComponent implements OnInit, AfterViewChecked {
 
   onChange(event: Event) {
     console.log('EVENT LOAD FIlE ', event);
-    this.displayImage = true;
     this.imageFile = (event.target as HTMLInputElement).files[0];
+    if (this.contextManagerService.checkFormat(this.imageFile.type)) {
+      this.error = true;
+      this.displayImage = false;
+    } else {
+      this.error = false;
+      this.displayImage = true;
+    }
     this.fileData.readAsDataURL(this.imageFile);
     this.fileData.onload = (progressEvent) => {
-      // The file's text will be printed here
       console.log('IMAGE :: WAL', progressEvent.target.result);
       this.imgReaderResult = progressEvent.target.result;
     };
@@ -51,39 +59,36 @@ export class AddMenuComponent implements OnInit, AfterViewChecked {
 
   onSubmit() {
     console.log('NG-FORM', this.ngFormAdd);
-    console.log('IMAGE ', this.image);
-     // FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
-     console.log('IMAGE FILE ', this.imageFile);
+    console.log('New Menu : ', this.newMenu);
+    // FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
+    console.log('IMAGE FILE ', this.imageFile);
     const uploadImageData = new FormData();
     uploadImageData.append('imageFile', this.imageFile, this.imageFile.name);
     console.log('UPLOADING IMAGE ', uploadImageData);
-    this.menuHttpService.uploadImage(uploadImageData, this.ngFormAdd.form.controls.categorie.value).subscribe(
-      response => {
-        console.log('IMAGE UPLOADED ', response);
+    this.newMenu.image = this.imageFile.name;
+    this.menuHttpService.addMenu(this.newMenu).subscribe(
+      (response) => {
+        console.log('menu Added', response);
+        this.menuHttpService
+          .uploadImage(uploadImageData, this.newMenu.categorie)
+          .subscribe(
+            (response) => {
+              console.log('IMAGE UPLOADED ', response);
+            },
+            (error) => {
+              console.log('ERROR ', error);
+            }
+          );
       },
-      error => {
-        console.log('ERROR ', error);
+      (error) => {
+        console.log('ERROR', error);
       }
-    )
-    const menu = new MenuData(
-      this.ngFormAdd.form.controls.categorie.value,
-      this.ngFormAdd.form.controls.menuName.value,
-      this.ngFormAdd.form.controls.price.value
-      );
-    console.log('ADDING NEW MENU ......', menu);
-    // this.menuHttpService.addMenu(menu).subscribe(
-    //     response => {
-    //       console.log('menu Added', response);
-    //     },
-    //     error => {
-    //       console.log('ERROR', error);
-    //     }
-    // );
-
+    );
   }
 
   onCancel() {
     this.imgReaderResult = null;
     this.displayImage = false;
+    this.imageFile = null;
   }
 }

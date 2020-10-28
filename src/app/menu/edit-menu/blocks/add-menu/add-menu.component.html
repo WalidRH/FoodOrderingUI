@@ -1,19 +1,24 @@
-<div class="container">
+<div class="container" [ngClass]="{'errorBorder': (error) }">
     <form (ngSubmit)="onSubmit()" #ngFormAdd="ngForm">
-        <div class="image-section">
+        <div class="image-section" [ngClass]="{'errorBorder': (error) }" >
             <img [src]="imgReaderResult" class="display-image" *ngIf="displayImage">
             <button (click)="onCancel()" class="cancel-image" *ngIf="displayImage"> Cancel </button>
-            <label class="label-form__image" *ngIf="!displayImage" > Image </label>
+            <label class="label-form__image" *ngIf="!displayImage && !error" > Image </label>
+            <label class="label-form__image_error" *ngIf="error"> Unsupported image format type {{!displayImage && !error}} </label>
             <input class="input-form__image" *ngIf="!displayImage"  type="file" [(ngModel)]="image" name="image" (change)="onChange($event)">
         </div>
         <div class="meal-detail">
-            <select class="input-form" [(ngModel)]="newMenu.categorie" name="categorie" required>
+            <select class="input-form" [(ngModel)]="newMenu.categorie" name="categorie" required #categoryselect="ngModel">
                 <option value="" selected data-default disabled>Please Select a Categorie...</option>
                 <option *ngFor="let element of categorieArray" [value]="element.name"> {{element.name}} </option>
             </select>
-            <input class="input-form" type="text" [(ngModel)]="menuName" name="menuName" placeholder="Meal Name">
-            <input class="input-form" type="number" [(ngModel)]="price" name="price" placeholder="Price">
+            <input class="input-form" type="text" [(ngModel)]="newMenu.name" name="name" placeholder="Meal Name" #nameValidation="ngModel">
+            <input class="input-form" type="number" [(ngModel)]="newMenu.price" name="price" placeholder="Price" #priceValidation="ngModel">
         </div>
-        <button class="form-submit"> ADD </button>
+        <button
+        [ngClass] = "{ 'form-submit-disabled': (!categoryselect.dirty || !nameValidation.dirty || !priceValidation.dirty || !displayImage),
+        'form-submit': (categoryselect.dirty || nameValidation.dirty || priceValidation.dirty || displayImage) }"
+        [disabled]=" !categoryselect.dirty || !nameValidation.dirty || !priceValidation.dirty || !displayImage" 
+        > ADD </button>
     </form>
 </div>

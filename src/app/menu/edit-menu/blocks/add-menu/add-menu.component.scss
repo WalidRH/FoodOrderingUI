@@ -12,13 +12,19 @@
     width: 100%;
     height: 450px;
     text-align: center;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
 }
-
+.label-form__image_error,
 .label-form__image{
     position: absolute;
     top: 50px;
     left: 0;
     right: 0;
+}
+
+.label-form__image_error{
+    color: red;
 }
 
 .input-form__image{
@@ -110,4 +116,29 @@
 .form-submit:hover {
   background: #025c00;
   cursor: pointer;
+}
+
+.errorBorder{
+    border: 2px solid red;
+}
+
+.form-submit-disabled{
+    height: 70px;
+    width: 100%;
+    background-color: #70776f;
+    border-bottom-left-radius: 29px;
+    border-bottom-right-radius: 29px;
+    outline: none;
+    border: none;
+    font-family: "Arimo", sans-serif;
+    font-size: 120%;
+    vertical-align: center;
+    color: white;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.form-submit-disabled:active,
+.form-submit-disabled:hover {
+  cursor: no-drop;
 }
