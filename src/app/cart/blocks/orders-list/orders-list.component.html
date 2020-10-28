@@ -11,10 +11,10 @@
     </tr>
     <tr *ngFor="let element of orderItemsArray" class="order-row">
         <td class="order-row_delete">
-            <button (click)=remove(element.ref)>X</button>
+            <button type="button" (click)=remove(element.ref)>X</button>
         </td>
         <td class="order-row_image">
-            <img [src]="element.menu.image">
+            <img [src]="element.menu.imagePath">
         </td>
         <td class="order-row_name">{{element.menu.name | uppercase}}</td>
         <td class="order-row_price">{{element.menu.price}} DH</td>

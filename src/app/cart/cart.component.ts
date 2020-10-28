@@ -37,6 +37,7 @@ export class CartComponent implements OnInit {
   }
 
   onSubmit(): void {
+    console.log('SUBMITTING WAL ');
     if (this.orderItemsArray.length === 0) {
       this.utilService.notificationMessage.next(
         new NotificationModule(

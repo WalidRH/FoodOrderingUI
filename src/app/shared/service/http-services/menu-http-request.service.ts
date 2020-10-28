@@ -5,11 +5,10 @@ import { PopularMenuInfo } from '../../model/PopularMenuInfo.module';
 import { HttpManagerModule } from '../../model/http-manager.module';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MenuHttpRequestService {
-
-  constructor( private http: HttpClient ) { }
+  constructor(private http: HttpClient) {}
 
   getPopularMenus(): any {
     return this.http.get<PopularMenuInfo[]>(
@@ -18,34 +17,45 @@ export class MenuHttpRequestService {
   }
 
   // tslint:disable-next-line: typedef
-  getMenuInfo(menuId: number){
+  getMenuInfo(menuId: number) {
     let queryParam = new HttpParams();
     queryParam = queryParam.set('id', '' + menuId);
-    return this.http.get<MenuData>(
-      HttpManagerModule.httpHost + '/menu/find',
-      {
-        params: queryParam
-      }
-    );
+    return this.http.get<MenuData>(HttpManagerModule.httpHost + '/menu/find', {
+      params: queryParam,
+    });
   }
 
   // tslint:disable-next-line: typedef
-  getAllMenu(){
+  getAllMenu() {
     return this.http.get<MenuData[]>(
       HttpManagerModule.httpHost + '/menu/findAll'
     );
   }
 
-  getListMenu(paramKey: string, paramValue: string){
+  getListMenu(paramKey: string, paramValue: string) {
     let queryParam = new HttpParams();
     queryParam = queryParam.set('' + paramKey, '' + paramValue);
     return this.http.get<MenuData[]>(
       HttpManagerModule.httpHost + '/menu/find',
       {
-        params: queryParam
+        params: queryParam,
       }
     );
   }
 
+  addMenu(menu: MenuData) {
+    return this.http.post(HttpManagerModule.httpHost + '/menu/add', menu);
+  }
 
+  uploadImage(fileData: FormData, category: string) {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.set('category', category);
+    return this.http.post(
+      HttpManagerModule.httpHost + '/menu/upload',
+      fileData,
+      {
+        params: queryParams,
+      }
+    );
+  }
 }
