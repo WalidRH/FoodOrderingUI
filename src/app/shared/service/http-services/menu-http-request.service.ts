@@ -44,13 +44,18 @@ export class MenuHttpRequestService {
   }
 
   addMenu(menu: MenuData) {
-    return this.http.post(HttpManagerModule.httpHost + '/menu/add',
-      menu);
+    return this.http.post(HttpManagerModule.httpHost + '/menu/add', menu);
   }
 
-  uploadImage(fileData: FormData){
-    return this.http.post(HttpManagerModule.httpHost  + '/menu/upload',
-     fileData);
+  uploadImage(fileData: FormData, category: string) {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.set('category', category);
+    return this.http.post(
+      HttpManagerModule.httpHost + '/menu/upload',
+      fileData,
+      {
+        params: queryParams,
+      }
+    );
   }
-
 }

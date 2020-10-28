@@ -57,7 +57,7 @@ export class AddMenuComponent implements OnInit, AfterViewChecked {
     const uploadImageData = new FormData();
     uploadImageData.append('imageFile', this.imageFile, this.imageFile.name);
     console.log('UPLOADING IMAGE ', uploadImageData);
-    this.menuHttpService.uploadImage(uploadImageData).subscribe(
+    this.menuHttpService.uploadImage(uploadImageData, this.ngFormAdd.form.controls.categorie.value).subscribe(
       response => {
         console.log('IMAGE UPLOADED ', response);
       },
@@ -71,14 +71,14 @@ export class AddMenuComponent implements OnInit, AfterViewChecked {
       this.ngFormAdd.form.controls.price.value
       );
     console.log('ADDING NEW MENU ......', menu);
-    this.menuHttpService.addMenu(menu).subscribe(
-        response => {
-          console.log('menu Added', response);
-        },
-        error => {
-          console.log('ERROR', error);
-        }
-    );
+    // this.menuHttpService.addMenu(menu).subscribe(
+    //     response => {
+    //       console.log('menu Added', response);
+    //     },
+    //     error => {
+    //       console.log('ERROR', error);
+    //     }
+    // );
 
   }
 
