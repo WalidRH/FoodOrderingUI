@@ -1,3 +1,4 @@
+import { MenuData } from './../../shared/model/MenuData.module';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-menu.component.scss']
 })
 export class EditMenuComponent implements OnInit {
-
+  
+  newMenuArray: MenuData[];
   constructor() { }
 
   ngOnInit(): void {
+    this.newMenuArray = new Array<MenuData>();
   }
 
 }

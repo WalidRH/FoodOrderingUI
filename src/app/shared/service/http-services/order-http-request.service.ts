@@ -117,7 +117,7 @@ export class OrderHttpRequestService {
         if ( !!responseData ){
           responseData.forEach(element => {
             if ( element.trackingStatus === this.STATUS_SUBMITTED ){
-              this.contextManagerService.imagePath(element.menu);
+              this.contextManagerService.setImagePath(element.menu);
               console.log('Image Path', element.menu.image);
               ordersArray.push(element);
             }

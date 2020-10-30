@@ -42,7 +42,7 @@ export class OrderMealComponent implements OnInit {
           responseData => {
             this.error = false;
             this.orderedMeal = responseData;
-            this.contextManagerService.imagePath(responseData);
+            this.contextManagerService.setImagePath(responseData);
             console.log('orderedMeal ', this.orderedMeal);
           },
           error => {

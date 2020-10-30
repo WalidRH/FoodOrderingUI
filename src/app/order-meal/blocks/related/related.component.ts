@@ -20,7 +20,7 @@ export class RelatedComponent implements OnInit {
       responseData => {
         this.relatedMeals = responseData;
         this.relatedMeals.forEach(element => {
-          this.contextManagerService.imagePath(element);
+          this.contextManagerService.setImagePath(element);
         });
       }
     );
