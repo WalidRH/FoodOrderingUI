@@ -7,6 +7,7 @@ import {
   ViewChild,
   AfterViewInit,
   AfterViewChecked,
+  Input,
 } from '@angular/core';
 import { JSONCategorieMapping } from '../../../../shared/model/Categorie.module';
 import { MenuHttpRequestService } from '../../../../shared/service/http-services/menu-http-request.service';
@@ -18,6 +19,7 @@ import { MenuHttpRequestService } from '../../../../shared/service/http-services
 })
 export class AddMenuComponent implements OnInit, AfterViewChecked {
   @ViewChild('ngFormAdd') ngFormAdd: NgForm;
+  @Input('newMenuArray') newMenuArray: MenuData[];
   image = '';
   newMenu: MenuData = new MenuData(null, null, null);
   fileData = new FileReader();
@@ -73,6 +75,7 @@ export class AddMenuComponent implements OnInit, AfterViewChecked {
           .uploadImage(uploadImageData, this.newMenu.categorie)
           .subscribe(
             (response) => {
+              this.newMenuArray.push(this.newMenu);
               console.log('IMAGE UPLOADED ', response);
             },
             (error) => {

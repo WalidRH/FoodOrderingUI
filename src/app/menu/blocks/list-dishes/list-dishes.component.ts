@@ -43,7 +43,8 @@ export class ListDishesComponent implements OnInit, OnChanges {
     this.pageArray = new Array<number>();
     arrayMenu.forEach((element) => {
       numberItemsPerPage++;
-      this.contextManagerService.imagePath(element);
+      this.contextManagerService.setImagePath(element);
+      console.log('ELEMENT IMAGE', element.imagePath);
       this.listDishes.push(element);
       if (numberItemsPerPage === this.MAX_NUMBER_ITEMS) {
         this.mapDishes.set(++pageNumber, this.listDishes);

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { PopularMenuInfo } from '../../model/PopularMenuInfo.module';
 import { HttpManagerModule } from '../../model/http-manager.module';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -57,5 +58,15 @@ export class MenuHttpRequestService {
         params: queryParams,
       }
     );
+  }
+
+  getImageFile(id: number): Observable<Blob> {
+    let queryParam = new HttpParams();
+    queryParam = queryParam.set('imageId', '' + id);
+    return this.http
+      .get(HttpManagerModule.httpHost + '/menu/getImage', {
+        params: queryParam,
+        responseType: 'blob',
+      });
   }
 }
