@@ -28,11 +28,11 @@ export class OrdersListComponent implements OnInit {
     console.log('DELETING ORDER ID : ' + idOrder );
     this.orderHttpService.deleteOrder(idOrder).subscribe(
       response => {
-        this.utilService.notificationMessage.next(new NotificationModule(response.message, 'SUCCESS'));
+        this.utilService.notificationMessage.next(new NotificationModule(response.message, NotificationModule.STATUS_SUCCESS));
         this.orderHttpService.findOrderItemsToValidate();
       },
       error => {
-        this.utilService.notificationMessage.next(new NotificationModule(error.error.error, 'FAILED'));
+        this.utilService.notificationMessage.next(new NotificationModule(error.error.error, NotificationModule.STATUS_FAILED));
       }
     );
   }

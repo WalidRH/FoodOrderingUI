@@ -65,11 +65,11 @@ export class OrderMealComponent implements OnInit {
     };
     this.orderHttpRequestService.setOrder(this.mealId, orderBody).subscribe(
       responseData => {
-        this.utilService.notificationMessage.next(new NotificationModule('Your order has been submitted', 'SUCCESS'));
+        this.utilService.notificationMessage.next(new NotificationModule('Your order has been submitted', NotificationModule.STATUS_SUCCESS));
       },
       error => {
         console.log('ERROR RESPONSE', error);
-        this.utilService.notificationMessage.next(new NotificationModule(error.error.message, 'FAILED'));
+        this.utilService.notificationMessage.next(new NotificationModule(error.error.message, NotificationModule.STATUS_FAILED));
         this.authenticationService.logout();
         this.router.navigate(['/login']);
       }
