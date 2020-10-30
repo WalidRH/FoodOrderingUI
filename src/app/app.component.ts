@@ -32,6 +32,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     console.log('CHANGING .... ');
     this.sharedUtilsService.notificationMessage.subscribe((notifMessage) => {
+      console.log('SUBSCRIBING .... ');
       if (!!notifMessage) {
         console.log('notification message');
         // add the component to the view
@@ -45,6 +46,7 @@ export class AppComponent implements OnInit {
         const timerclose = timer(5000);
         timerclose.subscribe(() => {
           this.sharedUtilsService.notificationMessage.next(null);
+          this.sharedUtilsService.notificationMessage.unsubscribe();
           this.notification.clear();
         });
       }

@@ -81,18 +81,17 @@ export class AddMenuComponent implements OnInit, AfterViewChecked {
               this.newMenuArray.push(this.newMenu);
               console.log('IMAGE UPLOADED ', response);
               this.ngFormAdd.resetForm();
-              const notification = new NotificationModule(' New Menu ADDED', NotificationModule.STATUS_SUCCESS);
-              this.notifMessage.notificationMessage.next( notification );
+              this.notifMessage.notificationMessage.next( new NotificationModule('New Menu ADDED', NotificationModule.STATUS_SUCCESS) );
             },
             (error) => {
               console.log('ERROR ', error);
-              const notification = new NotificationModule(' ERROR : ' + error.error.error, NotificationModule.STATUS_SUCCESS);
-              this.notifMessage.notificationMessage.next( notification );
+              this.notifMessage.notificationMessage.next(new NotificationModule(error.error.error, NotificationModule.STATUS_FAILED));
             }
           );
       },
       (error) => {
         console.log('ERROR', error);
+        this.notifMessage.notificationMessage.next(new NotificationModule(error.error.error, NotificationModule.STATUS_FAILED));
       }
     );
   }
