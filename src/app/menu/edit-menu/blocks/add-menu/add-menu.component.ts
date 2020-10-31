@@ -11,6 +11,8 @@ import {
 } from '@angular/core';
 import { JSONCategorieMapping } from '../../../../shared/model/Categorie.module';
 import { MenuHttpRequestService } from '../../../../shared/service/http-services/menu-http-request.service';
+import { NotificationModule } from '../../../../shared/model/notification.module';
+import { SharedUtilsService } from '../../../../shared/service/shared-utils.service';
 
 @Component({
   selector: 'app-add-menu',
@@ -30,7 +32,8 @@ export class AddMenuComponent implements OnInit, AfterViewChecked {
   error = false;
   constructor(
     private contextManagerService: ContextManagerService,
-    private menuHttpService: MenuHttpRequestService
+    private menuHttpService: MenuHttpRequestService,
+    private notifMessage: SharedUtilsService
   ) {}
   categorieArray: JSONCategorieMapping[] = new Array<JSONCategorieMapping>();
   ngOnInit(): void {
@@ -77,14 +80,18 @@ export class AddMenuComponent implements OnInit, AfterViewChecked {
             (response) => {
               this.newMenuArray.push(this.newMenu);
               console.log('IMAGE UPLOADED ', response);
+              this.ngFormAdd.resetForm();
+              this.notifMessage.notificationMessage.next( new NotificationModule('New Menu ADDED', NotificationModule.STATUS_SUCCESS) );
             },
             (error) => {
               console.log('ERROR ', error);
+              this.notifMessage.notificationMessage.next(new NotificationModule(error.error.error, NotificationModule.STATUS_FAILED));
             }
           );
       },
       (error) => {
         console.log('ERROR', error);
+        this.notifMessage.notificationMessage.next(new NotificationModule(error.error.error, NotificationModule.STATUS_FAILED));
       }
     );
   }

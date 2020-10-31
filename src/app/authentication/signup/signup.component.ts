@@ -51,7 +51,7 @@ export class SignupComponent implements OnInit {
             this.errorOccured = true;
           }else{
             this.loginUser(user.email, user._password);
-            this.sharedUtilsService.notificationMessage.next(new NotificationModule(response.Registration, 'SUCCESS'));
+            this.sharedUtilsService.notificationMessage.next(new NotificationModule(response.Registration, NotificationModule.STATUS_SUCCESS));
           }
         },
         error => {

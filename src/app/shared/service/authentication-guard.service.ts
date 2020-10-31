@@ -30,7 +30,7 @@ export class AuthenticationGuardService implements CanActivate{
       authenticatedUser => {
         console.log(' is authenticated ', authenticatedUser);
         if (!authenticatedUser ) {
-          this.utilsService.notificationMessage.next(new NotificationModule('You are not AUTHENTICATED: please login', 'FAILED'));
+          this.utilsService.notificationMessage.next(new NotificationModule('You are not AUTHENTICATED: please login', NotificationModule.STATUS_FAILED));
           this.router.navigate(['/login']);
         }
         return authenticatedUser;

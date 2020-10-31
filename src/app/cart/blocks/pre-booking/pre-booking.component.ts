@@ -36,7 +36,7 @@ export class PreBookingComponent implements OnInit, AfterViewChecked {
 
   checkOpeningHours(): boolean{
     if (this.maxHour < 0 || new Date().getHours() < this.orderHttpService.OPENING_HOUR){
-      this.utilService.notificationMessage.next(new NotificationModule('We are closed', 'FAILED'));
+      this.utilService.notificationMessage.next(new NotificationModule('We are closed', NotificationModule.STATUS_FAILED));
       setTimeout( () => {
         this.preBooking = false;
       }, 2000 );

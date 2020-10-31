@@ -127,7 +127,7 @@ export class OrderHttpRequestService {
       },
       error => {
         this.authenticationService.logout();
-        this.utilService.notificationMessage.next(new NotificationModule(error.error.message, 'FAILED'));
+        this.utilService.notificationMessage.next(new NotificationModule(error.error.message, NotificationModule.STATUS_FAILED));
       }
     );
   }
