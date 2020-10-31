@@ -12,9 +12,10 @@ export class ListNewMenuComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
-  ngOnChanges():void {
+  ngOnChanges(): void {
     console.log('NEW MENU ', this.newMenuArray);
   }
 }
