@@ -11,6 +11,7 @@
   bottom: 10%;
   border: 2px solid #025c00;
   border-radius: 50px;
+  display: inline-block;
 }
 
 .list-menu{
@@ -23,6 +24,7 @@
     max-width: 800px;
     vertical-align: top;
     overflow: scroll;
+    display: inline-block;
 }
 
 .new-menu-description{
@@ -31,6 +33,7 @@
     right: 10%;
     width: 50%;
     max-width: 502px;
+    display: inline-block;
 }
 
 .separator,
