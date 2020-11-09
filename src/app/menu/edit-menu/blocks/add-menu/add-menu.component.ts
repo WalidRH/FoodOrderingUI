@@ -71,26 +71,25 @@ export class AddMenuComponent implements OnInit, AfterViewChecked {
     uploadImageData.append('imageFile', this.imageFile, this.imageFile.name);
     console.log('UPLOADING IMAGE ', uploadImageData);
     this.newMenu.image = this.imageFile.name;
-    this.menuHttpService.addMenu(this.newMenu).subscribe(
+    this.menuHttpService
+    .uploadImage(uploadImageData, this.newMenu.categorie)
+    .subscribe(
       (response) => {
-        console.log('menu Added', response);
-        this.menuHttpService
-          .uploadImage(uploadImageData, this.newMenu.categorie)
-          .subscribe(
-            (response) => {
-              this.newMenuArray.push(this.newMenu);
-              console.log('IMAGE UPLOADED ', response);
-              this.ngFormAdd.resetForm();
-              this.notifMessage.notificationMessage.next( new NotificationModule('New Menu ADDED', NotificationModule.STATUS_SUCCESS) );
-            },
-            (error) => {
-              console.log('ERROR ', error);
-              this.notifMessage.notificationMessage.next(new NotificationModule(error.error.error, NotificationModule.STATUS_FAILED));
-            }
-          );
+        this.newMenuArray.push(this.newMenu);
+        console.log('IMAGE UPLOADED ', response);
+        this.menuHttpService.addMenu(this.newMenu).subscribe(
+          (response) => {
+            this.ngFormAdd.resetForm();
+            this.notifMessage.notificationMessage.next( new NotificationModule('New Menu ADDED', NotificationModule.STATUS_SUCCESS) );
+          },
+          (error) => {
+            console.log('ERROR', error);
+            this.notifMessage.notificationMessage.next(new NotificationModule(error.error.error, NotificationModule.STATUS_FAILED));
+          }
+        );
       },
       (error) => {
-        console.log('ERROR', error);
+        console.log('ERROR ', error);
         this.notifMessage.notificationMessage.next(new NotificationModule(error.error.error, NotificationModule.STATUS_FAILED));
       }
     );
