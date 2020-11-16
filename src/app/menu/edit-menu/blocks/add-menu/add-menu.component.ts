@@ -75,10 +75,13 @@ export class AddMenuComponent implements OnInit, AfterViewChecked {
     .uploadImage(uploadImageData, this.newMenu.categorie)
     .subscribe(
       (response) => {
-        this.newMenuArray.push(this.newMenu);
         console.log('IMAGE UPLOADED ', response);
         this.menuHttpService.addMenu(this.newMenu).subscribe(
-          (response) => {
+          (addedMenu: MenuData) => {
+            const newAddedMenu = addedMenu;
+            this.contextManagerService.setImagePath(newAddedMenu);
+            this.newMenuArray.push(newAddedMenu);
+            console.log('ADDING ARRAY : ', addedMenu );
             this.ngFormAdd.resetForm();
             this.notifMessage.notificationMessage.next( new NotificationModule('New Menu ADDED', NotificationModule.STATUS_SUCCESS) );
           },
