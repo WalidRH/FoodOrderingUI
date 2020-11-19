@@ -1,0 +1,26 @@
+main{
+    width: 100%;
+    margin: 50px 0px;
+    position: relative;
+    text-align: center;
+}
+
+.list-ordered-section{
+    display: inline-block;
+    width: 60%;
+}
+
+.separator {
+    position: absolute;
+    left: 60%;
+    top: 10%;
+    bottom: 10%;
+    border: 2px solid #025c00;
+    border-radius: 50px;
+    display: inline-block;
+  }
+
+  .ordered-details-section{
+    display: inline-block;
+    width: 30%;
+  }
