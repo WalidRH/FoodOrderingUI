@@ -1,1 +1,10 @@
-<app-header title='ORDERS'></app-header>
+<app-header title="TODAY'S ORDERS"></app-header>
+<main>
+    <div class="list-ordered-section">
+        <app-ordered-items></app-ordered-items>
+    </div>
+    <div class="separator" *ngIf='showOrderedItemDetails'></div>
+    <div class="ordered-details-section" *ngIf='showOrderedItemDetails'>
+        <router-outlet></router-outlet>
+    </div>
+</main>
