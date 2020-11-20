@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderedItemsComponent implements OnInit {
 
+  submittedOrders = false;
+  preReservedOrders = false;
+
   constructor() { }
 
   ngOnInit(): void {
