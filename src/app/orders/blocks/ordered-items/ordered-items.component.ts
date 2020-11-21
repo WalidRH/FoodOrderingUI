@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderedItemsComponent implements OnInit {
 
+  DISPLAY_ORDERED_LIST = {
+    submitted: 'SUBMIT',
+    preReserved: 'PRES'
+  };
+
+  sectionToDisplay: string;
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  show( orderedListType: string ){
+    this.sectionToDisplay = orderedListType;
+  }
+
 
 }

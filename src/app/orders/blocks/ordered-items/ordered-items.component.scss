@@ -1,57 +1,44 @@
 main {
   width: 80%;
-  border: 0px solid black;
-  box-shadow: 0px 0px 7px 0px grey;
-  border-radius: 20px;
   text-align: left;
 }
 
 .section-submitted,
 .section-prereserved {
+  width: calc(95.8% / 2);
   background-color: #02ab00;
   padding: 5px 10px;
   margin: 0px;
   color: white;
-  position: relative;
+  display: inline-block;
+  border: 0px solid black;
+  box-shadow: 0px 0px 7px 0px grey;
+  border-radius: 20px;
+  text-align: center;
 }
-
-.section-submitted {
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-}
-
-.section-prereserved {
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-}
+// button > * {
+//     pointer-events: none;
+// }
 
 .section-submitted p,
-.section-prereserved p {
+.section-prereserved p{
   font-family: "Arimo", sans-serif;
-  font-size: 1.2rem;
-  display: inline-block;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: white;
+  margin: 10px 0px;
 }
 
-.button-show{
-    width: 21px;
-    height: 21px;
-    border-radius: 20px;
-    border: none;
-    display: inline-block;
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    outline: none;
+.section-submitted:hover,
+.section-submitted:active,
+.section-prereserved:hover,
+.section-prereserved:active{
+  background-color: #025c00;
+  cursor: pointer;
 }
 
-.button-show svg{
-    transform: rotate(180deg);
-}
-button > * {
-    pointer-events: none;
-}
-
-.button-show:focus svg{
-    transform: rotate(90deg);
+.display-this-section{
+  background-color: #025c00;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
