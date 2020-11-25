@@ -22,8 +22,8 @@ export class RoleGuardService implements CanActivate {
 
   // tslint:disable-next-line: max-line-length
   canActivate( route: ActivatedRouteSnapshot, state: RouterStateSnapshot ): | boolean | UrlTree  | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    console.log('Route ', route);
-    console.log('State ', state);
+    console.log('RoleGuardService Route ', route);
+    console.log('RoleGuardService State ', state);
     this.authenticationService.autoLogin();
     return this.authenticationService.authenticatedUser.pipe(
       map((authenticatedUser) => {
@@ -33,7 +33,7 @@ export class RoleGuardService implements CanActivate {
           return true;
         } else {
           console.log('Is ADMIN FALSE');
-          this.route.navigate(['login']);
+          this.route.navigate(['/login']);
           return false;
         }
       })

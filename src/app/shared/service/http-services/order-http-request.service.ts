@@ -14,7 +14,7 @@ import { NotificationModule } from '../../model/notification.module';
   providedIn: 'root'
 })
 export class OrderHttpRequestService {
-  
+
   public PARAM_ORDER_ID = 'id';
   public PARAM_ORDER_STATUS = 'status';
   public PARAM_ORDER_DATE = 'orderDate';
