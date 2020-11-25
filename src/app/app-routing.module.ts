@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'signup', loadChildren: () => import('./authentication/signup/module/signup.module').then(m => m.SignupModule)},
   { path: 'orders',
    loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule),
-   canActivate: [RoleGuardService]
+   canActivate: [AuthenticationGuardService, RoleGuardService]
   },
   { path: 'cart',
    loadChildren: () => import('./cart/cart.module').then(m => m.CartModule),

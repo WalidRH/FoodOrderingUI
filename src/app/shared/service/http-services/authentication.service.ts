@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../../model/User.module';
 import { tap } from 'rxjs/operators';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpManagerModule } from '../../model/http-manager.module';
 
 @Injectable({
@@ -54,5 +54,23 @@ export class AuthenticationService {
     this.authenticatedUser.next(user);
   }
 
+  checkTokenValidity(): Promise<boolean>{
+    return new Promise<boolean>(
+      (resolve, refuse) => {
+       this.http.get<{String, boolean}>(
+          HttpManagerModule.httpHost + '/auth/checkToken'
+        ).subscribe(
+          response => {
+            console.log('Check token Response ', response);
+            resolve(true);
+          },
+          error => {
+            console.log('Check token Erro ', error);
+           refuse(false);
+          }
+        );
+      }
+    );
+  }
 
 }
