@@ -28,6 +28,7 @@ export class AuthenticationGuardService implements CanActivate{
       console.log('error', error);
       this.utilsService.notificationMessage.next(new NotificationModule('You are not AUTHENTICATED: please login', NotificationModule.STATUS_FAILED));
       this.router.navigate(['/login']);
+      this.authenticationService.logout();
       return false;
     }
   );

@@ -1,0 +1,15 @@
+.container{
+    width: 99.5%;
+    height: auto;
+    border: 3px solid #025c00;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.container-border-left{
+    border-top-left-radius: 20px;
+}
+
+.container-border-right{
+    border-top-right-radius: 20px;
+}

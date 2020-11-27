@@ -5,5 +5,5 @@
     <div class="section-prereserved" (click)="show(DISPLAY_ORDERED_LIST.preReserved)" [ngClass]="{'display-this-section': (sectionToDisplay === DISPLAY_ORDERED_LIST.preReserved)}">
         <p>Pre-reserved Orders</p>
     </div>
-    <app-ordered-items-list></app-ordered-items-list>
+    <app-ordered-items-list [orderedListData]="orderedListData"></app-ordered-items-list>
 </main>
