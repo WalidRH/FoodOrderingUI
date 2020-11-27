@@ -20,7 +20,6 @@ export class OrderedItemsComponent implements OnInit {
    } = {orderedListType: '', OrderedListArray: null};
 
   sectionToDisplay: string;
-
   constructor( private orderHttpService: OrderHttpRequestService ) { }
 
   ngOnInit(): void {

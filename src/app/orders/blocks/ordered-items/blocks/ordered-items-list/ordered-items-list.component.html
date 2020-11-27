@@ -1,1 +1,19 @@
-<p>ordered-items-list works!</p>
+<div class="container"
+    [ngClass]="{'container-border-left':( orderedListData.orderedListType === 'PRES' ), 'container-border-right': ( orderedListData.orderedListType === 'SUBMIT' ) }">
+    <table>
+        <tr *ngFor="let element of orderedListData.OrderedListArray" >
+            <!-- image -->
+            <td>{{element.menu.imagePath}}</td>
+            <!-- menu name -->
+            <td> {{element.menu.name}} </td>
+            <!-- full name -->
+            <td> {{ element.client.firstName }} {{ element.client.lastName }} </td>
+            <!-- phone number -->
+            <td> {{ element.client.phone }} </td>
+            <!-- total price -->
+            <td> {{ element.totalPrice }} DH</td>
+            <!-- detail button -->
+            <td> <button>edit</button> </td>
+        </tr>
+    </table>
+</div>
