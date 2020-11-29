@@ -23,12 +23,13 @@ table{
 tr{
     border-bottom: 1px solid black;
     width: 100%;
-    height: 9vh;
+    height: 5vh;
     border-radius: 10px;
     vertical-align: middle;
 }
 td{
     margin: 100px 50px;
+    text-align: center;
 }
 
 .separator{
@@ -36,4 +37,40 @@ td{
     border: 1px solid black;
     width: 0px;
     margin-top: 15px;
+}
+
+img,
+.image-menu,
+.button-edit,
+button{
+    height: 5vh;
+    width: 4vw;
+}
+
+button{
+    border-radius: 10px;
+    outline: none;
+    border: 2px solid rgb(168, 109, 0);
+    background-color: orange;
+}
+
+button:hover,
+button:active{
+    border-color: rgb(107, 71, 3);
+    background-color: rgb(221, 145, 3);
+    cursor: pointer;
+}
+
+button > svg {
+    height: 3vh;
+    width: 1vw;
+    vertical-align: middle;
+}
+
+button > p {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    font-family: "Arimo", sans-serif;
+    font-size: 120%;
 }

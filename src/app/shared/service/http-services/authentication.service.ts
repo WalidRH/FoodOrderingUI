@@ -44,6 +44,7 @@ export class AuthenticationService {
   logout(){
     this.authenticatedUser.next(null);
     localStorage.setItem('UserInfo', JSON.stringify(null));
+    this.authenticatedUser.unsubscribe();
   }
 
   autoLogin(){

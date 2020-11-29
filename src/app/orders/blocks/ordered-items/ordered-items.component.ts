@@ -1,3 +1,4 @@
+import { ContextManagerService } from './../../../shared/service/context-manager.service';
 import { OrderHttpRequestService } from './../../../shared/service/http-services/order-http-request.service';
 import { Component, OnInit } from '@angular/core';
 import { Order } from '../../../shared/model/order.module';
@@ -20,7 +21,7 @@ export class OrderedItemsComponent implements OnInit {
    } = {orderedListType: '', OrderedListArray: null};
 
   sectionToDisplay: string;
-  constructor( private orderHttpService: OrderHttpRequestService ) { }
+  constructor( private orderHttpService: OrderHttpRequestService, private contextImageLoader: ContextManagerService ) { }
 
   ngOnInit(): void {
     this.showSubmittedOrders();
@@ -47,6 +48,7 @@ export class OrderedItemsComponent implements OnInit {
             if ( !!element.nbPreson && !!element.serveDate ){
               this.orderedListData.OrderedListArray.splice(index, 1);
             }
+            this.contextImageLoader.setImagePath(element.menu);
           }
         );
       }
