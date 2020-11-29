@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrdersComponent implements OnInit {
 
-  showOrderedItemDetails = true;
+  showOrderedItemDetails = false;
 
   constructor() { }
 
