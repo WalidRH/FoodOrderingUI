@@ -14,4 +14,8 @@ export class OrdersComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  showOrderDetails(displayOrderedDetails: boolean){
+    this.showOrderedItemDetails = displayOrderedDetails;
+  }
+
 }
