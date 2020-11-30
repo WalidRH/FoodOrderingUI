@@ -65,6 +65,7 @@ button > svg {
     height: 3vh;
     width: 1vw;
     vertical-align: middle;
+    pointer-events: none;
 }
 
 button > p {

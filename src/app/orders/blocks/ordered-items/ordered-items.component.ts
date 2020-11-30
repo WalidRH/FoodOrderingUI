@@ -1,6 +1,6 @@
 import { ContextManagerService } from './../../../shared/service/context-manager.service';
 import { OrderHttpRequestService } from './../../../shared/service/http-services/order-http-request.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Order } from '../../../shared/model/order.module';
 
 @Component({
@@ -20,6 +20,7 @@ export class OrderedItemsComponent implements OnInit {
     OrderedListArray: Order[]
    } = {orderedListType: '', OrderedListArray: null};
 
+   @Output() showOrderDetails = new EventEmitter<boolean>();
   sectionToDisplay: string;
   constructor( private orderHttpService: OrderHttpRequestService, private contextImageLoader: ContextManagerService ) { }
 
@@ -73,5 +74,9 @@ export class OrderedItemsComponent implements OnInit {
         );
       }
     );
+  }
+
+  onOrderDetailsDisplay(isOrderDetailsDisplayed: boolean){
+    this.showOrderDetails.emit(isOrderDetailsDisplayed);
   }
 }

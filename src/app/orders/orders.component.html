@@ -1,7 +1,7 @@
 <app-header title="TODAY'S ORDERS"></app-header>
 <main>
     <div class="list-ordered-section">
-        <app-ordered-items></app-ordered-items>
+        <app-ordered-items (showOrderDetails)="showOrderDetails($event)"></app-ordered-items>
     </div>
     <div class="separator" *ngIf='showOrderedItemDetails'></div>
     <div class="ordered-details-section" *ngIf='showOrderedItemDetails'>
