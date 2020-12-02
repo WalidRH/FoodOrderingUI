@@ -4,6 +4,7 @@
     border: 3px solid #025c00;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    position: relative;
 }
 
 .container-border-left{
@@ -19,6 +20,7 @@ table{
     padding : 5px;
     border-collapse: collapse;
     vertical-align: middle;
+    display: inline-table;
 }
 tr{
     border-bottom: 1px solid black;

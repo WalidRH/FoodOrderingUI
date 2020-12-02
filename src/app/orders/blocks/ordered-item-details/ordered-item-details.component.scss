@@ -1,0 +1,58 @@
+.main-container{
+    width: 100%;
+    border: 2px solid #025c00;
+    border-radius: 20px;
+}
+
+.order-details{
+    background-color: #02ab00;
+    border-radius: 17px;
+    position: relative;
+}
+
+.order-details > img{
+    width: 100%;
+    border-radius: 17px;
+}
+
+.order-details > p{
+    margin: 0px;
+    font-family: "Arimo", sans-serif;
+    font-size: 1.5rem;
+    color: white;
+    padding: 1.1rem 0px;
+}
+
+.order-details__client{
+    background-color: #025c00;
+    width: auto;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    margin-left: 10%;
+}
+
+
+.box-header{
+    background-color: #02ab00;
+    border-bottom-right-radius:50px ;
+    width: 100%;
+    height: 20px;
+
+}
+
+label{
+    font-family: "Arimo", sans-serif;
+    color: white;
+}
+
+.property{
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 7px;
+}
+
+.client-data{
+    font-size: 1.1rem;
+    font-weight: lighter;
+
+}
