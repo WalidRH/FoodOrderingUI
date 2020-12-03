@@ -8,6 +8,7 @@ main{
 .list-ordered-section{
     display: inline-block;
     width: 60%;
+    vertical-align: middle;
 }
 
 .separator {
@@ -18,9 +19,11 @@ main{
     border: 2px solid #025c00;
     border-radius: 50px;
     display: inline-block;
+    vertical-align: middle;
   }
 
   .ordered-details-section{
     display: inline-block;
     width: 30%;
+    vertical-align: middle;
   }

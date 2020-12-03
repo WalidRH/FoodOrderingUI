@@ -1,22 +1,44 @@
 <main class="main-container">
     <div class="order-details">
-        <!-- image -->
-        <img src="../../../../assets/images/burger.jpg">
-        <!-- menu name -->
-        <p>"Burger"</p>
-        <div class="order-details__client">
-            <!-- client -->
-            <label class="property">Firstname</label>
-            <label class="client-data">"" </label><br>
-            <label class="property">LastName</label>
-            <label class="client-data">"" </label><br>
-            <label class="property">Email</label>
-            <label class="client-data">"" </label><br>
-            <label class="property">Phone</label>
-            <label class="client-data">"" </label><br>
+        <div class="image-menuName-client-order">
+            <div class="image-menuName-client">
+                <div class="image-menuName">
+                    <!-- image -->
+                    <img src="../../../../assets/images/burger.jpg">
+                    <!-- menu name -->
+                    <p>"Burger"</p>
+                </div>
+                <!-- client -->
+                <div class="image-menuName-client__client-info">
+                    <label class="client-data__Name"> "FirstName LastName" </label>
+                    <div class="client-data__contacts">
+                        <label class="property">
+                            Email
+                        </label>
+                        <label class="client-data">"" </label><br>
+                        <label class="property">
+                            Phone
+                        </label>
+                        <label class="client-data">"" </label><br>
+                    </div>
+                </div>
+            </div>
+            <!-- order -->
+            <div class="order-info">
+                <div class="order-info__quantity"><label>"quantity"</label></div>
+                <div class="order-info__orderDate"><label>"orderDate"</label></div>
+                <div class="order-info__serveDate"><label>"serveDate"</label></div>
+                <div class="order-info__nbPerson"><label>"nbPerson"</label></div>
+            </div>
         </div>
-        <!-- order -->
-        <!-- menu price -->
+        <div class="menu-price-info">
+            <label>"Unit Price"</label>
+            <label>"quantity"</label>
+            <!-- menu price -->
+        </div>
+    </div>
+    <div class="button-changeStatus">
         <!-- button change status -->
+        Button
     </div>
 </main>
