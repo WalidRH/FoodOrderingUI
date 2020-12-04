@@ -4,19 +4,66 @@
         <img src="../../../../assets/images/burger.jpg">
         <!-- menu name -->
         <p>"Burger"</p>
-        <div class="order-details__client">
-            <!-- client -->
-            <label class="property">Firstname</label>
-            <label class="client-data">"" </label><br>
-            <label class="property">LastName</label>
-            <label class="client-data">"" </label><br>
-            <label class="property">Email</label>
-            <label class="client-data">"" </label><br>
-            <label class="property">Phone</label>
-            <label class="client-data">"" </label><br>
+        <!-- client -->
+        <div class="order-details__client-block">
+            <div class="client-title">Client</div>
+            <div class="client-info">
+                <label class="client-data">"FirstName" </label>
+                <label class="client-data">"LastName" </label><br><br>
+                <label class="property">Email</label>
+                <label class="client-data">"" </label><br>
+                <label class="property">Phone</label>
+                <label class="client-data">"" </label><br>
+            </div>
         </div>
         <!-- order -->
+        <div class="order-details__order-block">
+            <div class="order-title">Order</div>
+            <div class="order-info">
+                <!-- order -->
+                <table>
+                    <tr>
+                        <td class="property-order">
+                            <label class="property">Quantity</label>
+                        </td>
+                        <td class="property-order"><label class="client-data">""</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="property-order">
+                            <label class="property">Order Date</label>
+                        </td>
+                        <td class="property-order"><label class="client-data">""</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="property-order">
+                            <label class="property"> Serve Date</label>
+                        </td>
+                        <td class="property-order"><label class="client-data">""</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="property-order">
+                            <label class="property">nombre of Preson</label>
+                        </td>
+                        <td class="property-order"><label class="client-data">""</label>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
         <!-- menu price -->
-        <!-- button change status -->
+        <div class="order-details__menu-block">
+            <div class="menu-title">Menu</div>
+            <div class="menu-info">
+                <label class="property">Unit Price</label>
+                <label class="menu-data">"" </label><br>
+                <label class="property">Total Price</label>
+                <label class="menu-data">"" </label><br>
+            </div>
+        </div>
     </div>
+    <!-- button change status -->
+    <button class="changeStatusStyle">Set to Served</button>
 </main>
