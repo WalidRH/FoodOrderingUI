@@ -1,0 +1,108 @@
+.main-container{
+    width: 100%;
+    border: 2px solid #025c00;
+    border-radius: 20px;
+    background-color: orange;
+}
+
+.order-details{
+    background-color: #888888;
+    border-radius: 17px;
+    position: relative;
+    padding-bottom: 1.1rem;
+}
+
+.order-details > img{
+    width: 100%;
+    border-radius: 17px;
+}
+
+.order-details > p{
+    margin: 0px;
+    font-family: "Arimo", sans-serif;
+    font-size: 1.5rem;
+    color: white;
+    padding: 1.1rem 0px;
+}
+
+.order-details__menu-block,
+.order-details__order-block,
+.order-details__client-block{
+    width: 100%;
+    margin: 20px 0px;
+}
+
+.menu-title,
+.order-title,
+.client-title{
+    display: inline-block;
+    margin: 0px 5%;
+    font-family: "Arimo", sans-serif;
+    font-size: 1.3rem;
+    vertical-align: middle;
+    color: white;
+}
+
+.menu-info,
+.order-info,
+.client-info{
+    background-color: #484848;
+    width: 80%;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    margin-left: 7px;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 10px 0px;
+}
+
+table{
+    margin: auto;
+}
+
+.box-header{
+    background-color: #02ab00;
+    border-bottom-right-radius:50px ;
+    width: 100%;
+    height: 20px;
+
+}
+
+label{
+    font-family: "Arimo", sans-serif;
+    color: white;
+}
+
+.property{
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 7px;
+    margin: 10px 0px;
+}
+
+.menu-data,
+.client-data{
+    font-size: 1.1rem;
+    font-weight: lighter;
+    margin-left: 1rem;
+}
+
+.property-order{
+    text-align: left;
+}
+
+.changeStatusStyle{
+    width: 100%;
+    background-color: orange;
+    font-family: "Arimo", sans-serif;
+    font-size: 1.5rem;
+    outline: none;
+    border: none;
+    border-radius: 17px;
+    height: 50px;
+}
+
+.changeStatusStyle:hover{
+    background-color: rgb(209, 138, 5);
+    cursor: pointer;
+}
