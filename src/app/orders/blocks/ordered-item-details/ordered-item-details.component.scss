@@ -87,6 +87,7 @@ label{
     margin-left: 1rem;
 }
 
+.property-client,
 .property-order{
     text-align: left;
 }
@@ -105,4 +106,9 @@ label{
 .changeStatusStyle:hover{
     background-color: rgb(209, 138, 5);
     cursor: pointer;
+}
+
+.gap-space{
+    margin: 0px 50px;
+    display: inline-block;
 }

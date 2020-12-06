@@ -35,27 +35,27 @@ export class OrderedItemsListComponent implements OnInit, AfterViewChecked  {
     this.showDetails.emit(true);
     this.router.navigate(['details'],
     {
-      // queryParams: {
-      //   ref: item.ref,
-      //   quantity: item.quantity,
-      //   trackingStatus: item.trackingStatus,
-      //   orderDate: item.orderDate,
-      //   totalPrice: item.totalPrice,
-      //   serveDate: item.serveDate,
-      //   nbPreson: item.nbPreson,
-      //   client: JSON.stringify({
-      //     firstName: item.client.firstName,
-      //     lastName: item.client.lastName,
-      //     email: item.client.email,
-      //     phone: item.client.phone
-      //   }),
-      //   menu: JSON.stringify({
-      //     categorie: item.menu.categorie,
-      //     name: item.menu.name,
-      //     price: item.menu.price,
-      //     imagePath: item.menu.imagePath
-      //   }),
-      // },
+      queryParams: {
+        ref: item.ref,
+        quantity: item.quantity,
+        trackingStatus: item.trackingStatus,
+        orderDate: item.orderDate,
+        totalPrice: item.totalPrice,
+        serveDate: item.serveDate,
+        nbPreson: item.nbPreson,
+        client: JSON.stringify({
+          firstName: item.client.firstName,
+          lastName: item.client.lastName,
+          email: item.client.email,
+          phone: item.client.phone
+        }),
+        menu: JSON.stringify({
+          categorie: item.menu.categorie,
+          name: item.menu.name,
+          price: item.menu.price,
+          imagePath: item.menu.imagePath
+        }),
+      },
       relativeTo: this.currentRoute
     });
   }

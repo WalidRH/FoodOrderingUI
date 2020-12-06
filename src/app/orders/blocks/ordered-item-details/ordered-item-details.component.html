@@ -1,19 +1,33 @@
 <main class="main-container">
     <div class="order-details">
         <!-- image -->
-        <img src="../../../../assets/images/burger.jpg">
+        <img [src]="orderDetails.menu.imagePath">
         <!-- menu name -->
-        <p>"Burger"</p>
+        <p> {{orderDetails.menu.name }} </p>
         <!-- client -->
         <div class="order-details__client-block">
             <div class="client-title">Client</div>
             <div class="client-info">
-                <label class="client-data">"FirstName" </label>
-                <label class="client-data">"LastName" </label><br><br>
-                <label class="property">Email</label>
-                <label class="client-data">"" </label><br>
-                <label class="property">Phone</label>
-                <label class="client-data">"" </label><br>
+                <label class="client-data"> {{orderDetails.client.firstName}} </label>
+                <label class="client-data"> {{orderDetails.client.lastName}} </label><br><br>
+                <table>
+                    <tr>
+                        <td class="property-client">
+                            <label class="property">Email</label>
+                        </td>
+                        <td class="property-client">
+                            <label class="client-data"> {{orderDetails.client.email}} </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="property-client">
+                            <label class="property">Phone</label>
+                        </td>
+                        <td class="property-client">
+                            <label class="client-data"> {{orderDetails.client.phone}} </label><br>
+                        </td>
+                    </tr>
+                </table>                
             </div>
         </div>
         <!-- order -->
@@ -26,28 +40,28 @@
                         <td class="property-order">
                             <label class="property">Quantity</label>
                         </td>
-                        <td class="property-order"><label class="client-data">""</label>
+                        <td class="property-order"><label class="client-data"> {{orderDetails.quantity}} </label>
                         </td>
                     </tr>
                     <tr>
                         <td class="property-order">
                             <label class="property">Order Date</label>
                         </td>
-                        <td class="property-order"><label class="client-data">""</label>
+                        <td class="property-order"><label class="client-data"> {{orderDetails.orderDate | date:"yyyy-MM-dd  HH:mm"}} </label>
                         </td>
                     </tr>
-                    <tr>
+                    <tr *ngIf="!!orderDetails.serveDate">
                         <td class="property-order">
                             <label class="property"> Serve Date</label>
                         </td>
-                        <td class="property-order"><label class="client-data">""</label>
+                        <td class="property-order"><label class="client-data"> {{orderDetails.serveDate | date:"yyyy-MM-dd  HH:mm"}} </label>
                         </td>
                     </tr>
-                    <tr>
+                    <tr *ngIf="!!orderDetails.nbPreson">
                         <td class="property-order">
                             <label class="property">nombre of Preson</label>
                         </td>
-                        <td class="property-order"><label class="client-data">""</label>
+                        <td class="property-order"><label class="client-data"> {{orderDetails.nbPreson}} </label>
                         </td>
                     </tr>
                 </table>
@@ -57,10 +71,11 @@
         <div class="order-details__menu-block">
             <div class="menu-title">Menu</div>
             <div class="menu-info">
-                <label class="property">Unit Price</label>
-                <label class="menu-data">"" </label><br>
-                <label class="property">Total Price</label>
-                <label class="menu-data">"" </label><br>
+                <label class="property">Unit Price:</label>
+                <label class="menu-data"> {{orderDetails.menu.price}} DH </label>
+                <div class="gap-space"></div>
+                <label class="property">Total Price:</label>
+                <label class="menu-data"> {{orderDetails.totalPrice}} DH </label>
             </div>
         </div>
     </div>
