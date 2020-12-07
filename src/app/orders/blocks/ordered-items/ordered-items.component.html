@@ -1,9 +1,16 @@
 <main>
-    <div class="section-submitted" (click)="show(DISPLAY_ORDERED_LIST.submitted)" [ngClass]="{'display-this-section': (sectionToDisplay === DISPLAY_ORDERED_LIST.submitted)}">
+    <div class="section-submitted" (click)="show(DISPLAY_ORDERED_LIST.submitted)"
+        [ngClass]="{'display-this-section': (sectionToDisplay === DISPLAY_ORDERED_LIST.submitted)}">
         <p>Submitted Orders</p>
     </div>
-    <div class="section-prereserved" (click)="show(DISPLAY_ORDERED_LIST.preReserved)" [ngClass]="{'display-this-section': (sectionToDisplay === DISPLAY_ORDERED_LIST.preReserved)}">
+    <div class="section-prepared" (click)="show(DISPLAY_ORDERED_LIST.prepared)"
+        [ngClass]="{'display-this-section': (sectionToDisplay === DISPLAY_ORDERED_LIST.prepared)}">
+        <p>On prepared Orders</p>
+    </div>
+    <div class="section-prereserved" (click)="show(DISPLAY_ORDERED_LIST.preReserved)"
+        [ngClass]="{'display-this-section': (sectionToDisplay === DISPLAY_ORDERED_LIST.preReserved)}">
         <p>Pre-reserved Orders</p>
     </div>
-    <app-ordered-items-list [orderedListData]="orderedListData" (showDetails)="onOrderDetailsDisplay($event)" ></app-ordered-items-list>
+    <app-ordered-items-list [orderedListData]="orderedListData" (showDetails)="onOrderDetailsDisplay($event)">
+    </app-ordered-items-list>
 </main>
