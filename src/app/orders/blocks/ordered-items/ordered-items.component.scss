@@ -4,8 +4,9 @@ main {
 }
 
 .section-submitted,
+.section-prepared,
 .section-prereserved {
-  width: calc(95.8% / 2);
+  width: calc(95.8% / 3.07);
   background-color: #02ab00;
   padding: 5px 10px;
   margin: 0px;
@@ -21,6 +22,7 @@ main {
 // }
 
 .section-submitted p,
+.section-prepared p,
 .section-prereserved p{
   font-family: "Arimo", sans-serif;
   font-size: 1.5rem;
@@ -31,6 +33,8 @@ main {
 
 .section-submitted:hover,
 .section-submitted:active,
+.section-prepared:hover,
+.section-prepared:active,
 .section-prereserved:hover,
 .section-prereserved:active{
   background-color: #025c00;

@@ -12,6 +12,7 @@ export class OrderedItemsComponent implements OnInit {
 
   DISPLAY_ORDERED_LIST = {
     submitted: 'SUBMIT',
+    prepared: 'PREPARED',
     preReserved: 'PRES'
   };
 
@@ -32,6 +33,8 @@ export class OrderedItemsComponent implements OnInit {
   show( orderedListType: string ){
     if ( this.DISPLAY_ORDERED_LIST.submitted === orderedListType ){
       this.showSubmittedOrders();
+    }else if ( this.DISPLAY_ORDERED_LIST.prepared === orderedListType ){
+      this.showPreparedOrders();
     }else{
      this.showPreReservedOrders();
     }
@@ -40,7 +43,15 @@ export class OrderedItemsComponent implements OnInit {
   }
 
   showSubmittedOrders(){
-    this.orderHttpService.getOrder(this.orderHttpService.PARAM_ORDER_STATUS, this.orderHttpService.STATUS_VALID).subscribe(
+    this.showOrdersByStatus(this.orderHttpService.STATUS_VALID);
+  }
+
+  showPreparedOrders(){
+    this.showOrdersByStatus(this.orderHttpService.STATUS_PREPARED);
+  }
+
+  showOrdersByStatus(statusOrder: string){
+    this.orderHttpService.getOrder(this.orderHttpService.PARAM_ORDER_STATUS, statusOrder).subscribe(
       response => {
         this.orderedListData.orderedListType = this.DISPLAY_ORDERED_LIST.submitted;
         this.orderedListData.OrderedListArray = response;
@@ -55,6 +66,7 @@ export class OrderedItemsComponent implements OnInit {
       }
     );
   }
+  
 
   showPreReservedOrders(){
     let todayDate = new Date().toISOString();
