@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     console.log('CHANGING .... ');
     this.sharedUtilsService.notificationMessage.subscribe((notifMessage) => {
-      console.log('SUBSCRIBING .... ');
+      console.log(' notifMessage SUBSCRIBING .... ');
       if (!!notifMessage) {
         console.log('notification message');
         // add the component to the view

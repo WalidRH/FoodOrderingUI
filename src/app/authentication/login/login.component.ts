@@ -45,10 +45,6 @@ export class LoginComponent implements OnInit {
             this.errorMessage = error.error.error;
           }
         );
-
-      this.authenticationService.authenticatedUser.subscribe((responseData) => {
-        console.log('DATA ', responseData);
-      });
     }
   }
 }
