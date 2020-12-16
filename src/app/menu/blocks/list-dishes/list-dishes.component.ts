@@ -75,5 +75,6 @@ export class ListDishesComponent implements OnInit, OnChanges {
   showPage(pageNumber: number) {
     this.currentPage = pageNumber;
     this.listDishes = this.mapDishes.get(pageNumber);
+    window.scroll(0,0);
   }
 }
