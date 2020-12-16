@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from './../shared/service/http-services/authentication.service';
 import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 
@@ -12,11 +12,12 @@ export class NavBarComponent implements OnInit, OnChanges {
 
   menuItems: string[] = ['home', 'menu', 'contacts', 'about', 'login', 'signup'];
 
-  constructor(private authenticationService: AuthenticationService, private route: Router) { }
+  constructor(private authenticationService: AuthenticationService, private route: Router, private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.authenticationService.autoLogin();
     this.setNavBar();
+    console.log('Actual activeRoute  NAV BAR : ', this.route.url);
   }
 
   ngOnChanges(changes: SimpleChanges): void {

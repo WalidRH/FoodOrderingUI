@@ -6,9 +6,9 @@
     </div>
     <nav class="main-nav">
         <ul class="main-nav__items">
-            <li *ngFor=" let menuItem of menuItems " class="main-nav__item">
+            <li *ngFor=" let menuItem of menuItems " class="main-nav__item" routerLinkActive="active">
                 <a *ngIf="menuItem === 'logout'" (click)="onLogout()"> {{ menuItem | uppercase }} </a>
-                <a *ngIf="menuItem !== 'logout'" [href]="[ '/'+menuItem ]"> {{menuItem | uppercase}} </a>
+                <a *ngIf="menuItem !== 'logout'" [routerLink]="[ '/'+menuItem ]"> {{menuItem | uppercase}} </a>
             </li>
             <button (click)="mybasketClick()">
                 <svg version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512 512" width="20" height="18" xml:space="preserve">

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../../model/User.module';
@@ -12,9 +13,9 @@ export class AuthenticationService {
 
   public ROLE_ADMIN = 'ADMIN';
   public ROLE_USER = 'USER';
-  constructor( private http: HttpClient ) { }
+  constructor( private http: HttpClient, private router: Router ) { }
   authenticatedUser = new BehaviorSubject<User>(null);
-  login(email: string , password: string): any{
+  login(email: string , password: string){
     let queryParams = new HttpParams();
     queryParams = queryParams.set('email', '' + email);
     queryParams = queryParams.append('password', '' + password);
@@ -26,8 +27,13 @@ export class AuthenticationService {
     ).pipe(
       tap(
         responseData => {
+          console.log('RESPONSE DATA', responseData);
             this.authenticatedUser.next(responseData);
             localStorage.setItem('UserInfo', JSON.stringify(responseData));
+        },
+        error => {
+          console.log('ERROR DATA ', error);
+          window.location.reload();
         }
       )
     );
@@ -42,12 +48,14 @@ export class AuthenticationService {
   }
 
   logout(){
-    this.authenticatedUser.next(null);
     localStorage.setItem('UserInfo', JSON.stringify(null));
+    console.log('Unsubscribing.....');
     this.authenticatedUser.unsubscribe();
+    this.router.navigate(['/login']);
   }
 
   autoLogin(){
+    console.log('AUTO LOGIN ');
     const user: User = JSON.parse(localStorage.getItem('UserInfo'));
     if ( !user ){
       return;
@@ -56,6 +64,7 @@ export class AuthenticationService {
   }
 
   checkTokenValidity(): Promise<boolean>{
+    console.log('Check token validity');
     return new Promise<boolean>(
       (resolve, refuse) => {
        this.http.get<{String, boolean}>(

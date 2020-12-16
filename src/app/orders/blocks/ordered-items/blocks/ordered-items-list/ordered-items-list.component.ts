@@ -56,6 +56,7 @@ export class OrderedItemsListComponent implements OnInit, AfterViewChecked  {
           imagePath: item.menu.imagePath
         }),
       },
+      fragment :'details',
       relativeTo: this.currentRoute
     });
   }

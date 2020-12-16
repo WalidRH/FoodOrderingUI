@@ -31,7 +31,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{
+    scrollPositionRestoration: 'enabled', // Configures if the scroll position needs to be restored when navigating back. https://angular.io/api/router/ExtraOptions#scrollPositionRestoration
+    anchorScrolling: 'enabled' // When set to 'enabled', scrolls to the anchor element when the URL has a fragment. https://angular.io/api/router/ExtraOptions#scrollPositionRestoration
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

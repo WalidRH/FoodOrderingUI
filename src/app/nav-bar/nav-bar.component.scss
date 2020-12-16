@@ -33,8 +33,9 @@ li{
     font-weight: bold;
     display: inline-block;
     padding: 5px 20px;
-    border-left: 5x;
+    border-left: 5px;
     vertical-align: middle;
+    margin: 0px 5px;
 }
 
 .main-nav{
@@ -45,6 +46,7 @@ li{
     vertical-align: middle;
 }
 
+.active,
 li:active,
 li:hover{
     border-radius: 7px;
