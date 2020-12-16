@@ -16,8 +16,6 @@ export class AuthenticationGuardService implements CanActivate{
 
  // tslint:disable-next-line: max-line-length
  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-  console.log('AuthenticationGuardService Route ', route);
-  console.log('AuthenticationGuardService State ', state);
   this.authenticationService.autoLogin();
   return this.authenticationService.checkTokenValidity().then(
     (result) => {
@@ -27,6 +25,7 @@ export class AuthenticationGuardService implements CanActivate{
     (error) => {
       console.log('error', error);
       this.utilsService.notificationMessage.next(new NotificationModule('You are not AUTHENTICATED: please login', NotificationModule.STATUS_FAILED));
+      console.log('LOGOUT ');
       this.authenticationService.logout();
       return false;
     }
