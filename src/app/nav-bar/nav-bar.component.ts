@@ -33,15 +33,17 @@ export class NavBarComponent implements OnInit, OnChanges {
     this.authenticationService.authenticatedUser.subscribe(
       authenticatedUser => {
         console.log('authenticated user ', authenticatedUser);
-        console.log('authenticated user ', !authenticatedUser); //is Null
-        console.log('authenticated user ', !!authenticatedUser); // is Not Null
+        console.log('authenticated user !authenticatedUser ', !authenticatedUser); //is Null
+        console.log('authenticated user !!authenticatedUser ', !!authenticatedUser); // is Not Null
         if (!!authenticatedUser){
+          console.log('authenticated user ', !!authenticatedUser); // is Not Null
            ( authenticatedUser.role === this.authenticationService.ROLE_ADMIN )
            ? this.menuItems.splice(4, 1, 'orders')
            : this.menuItems.splice(4, 2);
            this.menuItems.splice(5, 1, 'logout');
         }
         else{
+          console.log('authenticated user ', !!authenticatedUser); // is Not Null
           this.menuItems.splice(4, 1, 'login');
           this.menuItems.splice(5, 1, 'signup');
         }

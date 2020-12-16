@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../../model/User.module';
 import { tap } from 'rxjs/operators';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { HttpManagerModule } from '../../model/http-manager.module';
 
 @Injectable({
@@ -15,6 +15,7 @@ export class AuthenticationService {
   public ROLE_USER = 'USER';
   constructor( private http: HttpClient, private router: Router ) { }
   authenticatedUser = new BehaviorSubject<User>(null);
+
   login(email: string , password: string){
     let queryParams = new HttpParams();
     queryParams = queryParams.set('email', '' + email);
@@ -28,12 +29,16 @@ export class AuthenticationService {
       tap(
         responseData => {
           console.log('RESPONSE DATA', responseData);
-            this.authenticatedUser.next(responseData);
+           this.authenticatedUser.next(responseData);
             localStorage.setItem('UserInfo', JSON.stringify(responseData));
         },
         error => {
           console.log('ERROR DATA ', error);
-          window.location.reload();
+          if (error.name === 'ObjectUnsubscribedError'){
+            console.log('ERROR ObjectUnsubscribedError');
+            this.authenticatedUser.unsubscribe();
+            this.login(email, password);
+          }
         }
       )
     );
@@ -50,7 +55,7 @@ export class AuthenticationService {
   logout(){
     localStorage.setItem('UserInfo', JSON.stringify(null));
     console.log('Unsubscribing.....');
-    this.authenticatedUser.unsubscribe();
+    this.authenticatedUser.next(null);
     this.router.navigate(['/login']);
   }
 

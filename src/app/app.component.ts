@@ -7,6 +7,7 @@ import {
   ComponentFactoryResolver,
   OnChanges,
   OnInit,
+  OnDestroy,
 } from '@angular/core';
 import { timer } from 'rxjs';
 
@@ -15,7 +16,8 @@ import { timer } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
+
   title = 'FoodOrderingUI';
 
   @ViewChild('notification', { read: ViewContainerRef })
@@ -43,13 +45,16 @@ export class AppComponent implements OnInit {
         // pass some data to the component
         componentRef.instance.notificationMessage = notifMessage.message;
         componentRef.instance.notificationStatus = notifMessage.status;
-        const timerclose = timer(5000);
+        const timerclose = timer(3000);
         timerclose.subscribe(() => {
           this.sharedUtilsService.notificationMessage.next(null);
-          this.sharedUtilsService.notificationMessage.unsubscribe();
           this.notification.clear();
         });
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.sharedUtilsService.notificationMessage.unsubscribe();
   }
 }
