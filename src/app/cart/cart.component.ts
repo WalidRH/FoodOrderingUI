@@ -57,15 +57,28 @@ export class CartComponent implements OnInit {
   }
 
   updateOrderItem(arrayOrders: Order[], status: string): void {
+
     arrayOrders.forEach(orderItem => {
       this.setOrderItemProperties(orderItem, status);
-      this.orderHttpService.editOrder(orderItem).subscribe(
+      const isOrderValid = this.orderHttpService.editOrder(orderItem).subscribe(
         response => {
           this.loading = false;
           console.log('Updating order item ', orderItem);
           console.log('Order state updated ', response);
+          this.utilService.notificationMessage.next(
+            new NotificationModule(
+              'Your Order has been valid',
+              'SUCCESS'
+            )
+          );
+          return !!response;
         }
       );
+
+      if (isOrderValid){
+        this.orderItemsArray.splice(0, this.orderItemsArray.length);
+      }
+
     });
   }
 
