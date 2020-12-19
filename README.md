@@ -2,6 +2,21 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.6.
 
+## Environement Setup
+After a git clone, please make sure to uncomment the " httpHost " variable in ' HttpManagerModule ' class, something like:
+```typescript
+  
+export class HttpManagerModule {
+
+  // static httpHost: string = hosts.ctosRemote; // <-- comment this
+  static httpHost: string = hosts.localhost; // <-- uncomment this
+
+}
+
+
+```
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
